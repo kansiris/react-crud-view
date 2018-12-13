@@ -4,8 +4,7 @@ import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse,  Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
-import {Input, MDBCol, MDBContainer, MDBRow,Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
+import { MDBCol,  MDBRow, Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
 
 
 
@@ -72,7 +71,7 @@ class Results extends React.Component{
             
             <CardBody style={{ padding: "0"}}>
              
-              <CardText>
+            
               <h10 className="card-title" id="name">{item.BusinessName}
           <i className="fas fa-map-marker-alt" style={{color: "red",paddingLeft: "22%"}}></i>
           {item.Landmark}, {item.City}</h10>
@@ -91,7 +90,6 @@ class Results extends React.Component{
       <div className="card-footer">
         <small className="text-muted" id="description">Capacity : {item.Minimumseatingcapacity} - {item.Maximumcapacity}<a href="#" style={{float:"right",paddingTop: "4px"}}>Book Now</a></small>
       </div>
-              </CardText>
              
             </CardBody>
           </Card>
