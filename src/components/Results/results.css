@@ -1,5 +1,10 @@
+.card-title{
+  font-weight: 600;
+  color: black;
+}
+
 .card-text{
-  padding-left: 7%;
+  /* padding-left: 7%; */
   font-weight: 800;
   font-family: lato;
 }
