@@ -4,8 +4,42 @@ import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import images from '../../images/noimages.png';
 import { MDBCol,  MDBRow, Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
 //this is sireesh
+
+class Results1 extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={ items:[],name:'',data:'' };
+    this.handleChange = this.handleChange.bind(this);
+    this.getvendor = this.getvendor.bind(this);
+    this.updateState = this.updateState.bind(this);
+  }
+  handleChange(e){
+    this.setState({name:e.target.value})
+  }
+  
+  componentDidMount(){
+    fetch("http://localhost:49716/api/results/getall?type=Venue")
+    .then((res) => res.json())
+    .then((result) => { this.setState({items:result})})
+  }
+
+  getvendor(){
+    var search = this.state.name;
+    fetch("http://localhost:49716/api/results/search?name="+search+"&&type=Venue")
+    .then((res) => res.json)
+    .then((result) => {this.setState({items:result})})
+  }
+  updateState(e) {
+    this.setState({data: e.target.value});
+ }
+    render(){
+      var i=0;
+      
+      return(<div> </div>)}}
+
 
 
 class Results extends React.Component{
@@ -37,6 +71,7 @@ class Results extends React.Component{
  }
     render(){
       var i=0;
+      
       return(
         <div>
 
@@ -53,8 +88,16 @@ class Results extends React.Component{
        
         <MDBCol md="4"><Col>
           <Card style={{ width: "118%"}}>
-            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
-            
+         {/* if({item.image} ==""){
+            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={images} waves />
+          }else{
+            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={{uri:item.image}} waves />
+          }*/}
+
+                     { (item.image ==='')?
+                      <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={images} waves />
+:           
+<CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={{uri:item.image}} waves />}
             <MDBRow>
         <MDBCol size="4">	<div className="rating">
         <i className="fas fa-star-half-alt" id="star"></i>
