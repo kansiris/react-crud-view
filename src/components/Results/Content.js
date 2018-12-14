@@ -6,14 +6,11 @@ import Results from './Results';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-<<<<<<< HEAD
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
-import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
-=======
+
 import {MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 
 
->>>>>>> 43547ec0128df8f07c32c1bb570ec72ea7bb1dd0
+
 
 class Content extends React.Component {
   render() {
