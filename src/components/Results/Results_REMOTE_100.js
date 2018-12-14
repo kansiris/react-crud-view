@@ -5,9 +5,6 @@ import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 <<<<<<< HEAD
-import images from '../../images/noimages.png';
-=======
-<<<<<<< HEAD
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
 // import { Checkbox } from 'mdbreact';
@@ -15,42 +12,8 @@ import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage,
 class Results extends React.Component {
   constructor(props) {
 =======
->>>>>>> 70d960d63d767548c950f5f2a6f19b93f4355105
 import { MDBCol,  MDBRow, Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
 //this is sireesh
-
-class Results1 extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={ items:[],name:'',data:'' };
-    this.handleChange = this.handleChange.bind(this);
-    this.getvendor = this.getvendor.bind(this);
-    this.updateState = this.updateState.bind(this);
-  }
-  handleChange(e){
-    this.setState({name:e.target.value})
-  }
-  
-  componentDidMount(){
-    fetch("http://localhost:49716/api/results/getall?type=Venue")
-    .then((res) => res.json())
-    .then((result) => { this.setState({items:result})})
-  }
-
-  getvendor(){
-    var search = this.state.name;
-    fetch("http://localhost:49716/api/results/search?name="+search+"&&type=Venue")
-    .then((res) => res.json)
-    .then((result) => {this.setState({items:result})})
-  }
-  updateState(e) {
-    this.setState({data: e.target.value});
- }
-    render(){
-      var i=0;
-      
-      return(<div> </div>)}}
-
 
 
 class Results extends React.Component{
@@ -78,17 +41,6 @@ class Results extends React.Component{
       .then((res) => res.json)
       .then((result) => { this.setState({ items: result }) })
   }
-<<<<<<< HEAD
-  updateState(e) {
-    this.setState({data: e.target.value});
- }
-    render(){
-      var i=0;
-      
-      return(
-        <div>
-=======
->>>>>>> 70d960d63d767548c950f5f2a6f19b93f4355105
 
   updateState(e) {
     this.setState({ data: e.target.value });
@@ -156,16 +108,8 @@ class Results extends React.Component{
        
         <MDBCol md="4"><Col>
           <Card style={{ width: "118%"}}>
-         {/* if({item.image} ==""){
-            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={images} waves />
-          }else{
-            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={{uri:item.image}} waves />
-          }*/}
-
-                     { (item.image ==='')?
-                      <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={images} waves />
-:           
-<CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={{uri:item.image}} waves />}
+            <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
+            
             <MDBRow>
         <MDBCol size="4">	<div className="rating">
         <i className="fas fa-star-half-alt" id="star"></i>
