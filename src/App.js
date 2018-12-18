@@ -4,7 +4,6 @@ import Filter from './components/Results/Filter';
 import Header from './components/Results/Header';
 import Results from './components/Results/Results';
 import Content from './components/Results/Content';
-import resultsside from './components/Results/resultsside';
 // import "font-awesome/css/font-awesome.min.css";
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import "mdbreact/dist/css/mdb.css";

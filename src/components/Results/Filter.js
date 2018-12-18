@@ -4,23 +4,13 @@ import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-<<<<<<< HEAD
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
-import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
+//import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
+//import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
 
 
-=======
-// this is kansiris
-///testing git hub
->>>>>>> 43547ec0128df8f07c32c1bb570ec72ea7bb1dd0
 class Filter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isGoing: true,
-      numberOfGuests: 2
-    };
-
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -28,28 +18,24 @@ class Filter extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
   }
   render() {
     return (
       <div>
         <h6>Filter Service Type</h6>
-<div class="form-check">
-    <input type="checkbox" class="form-check-input" id="materialUnchecked"/>
-    <label class="form-check-label" for="materialUnchecked">Material unchecked</label>
-</div>
+        <div className="form-check">
+          <input type="checkbox" class="form-check-input" id="materialUnchecked" />
+          <label className="form-check-label" for="materialUnchecked">Material unchecked</label>
+        </div>
         <form>
           <label>
-            <input name="Hotel" type="checkbox"  onChange={this.handleInputChange} />
+            <input name="Hotel" type="checkbox" onChange={this.handleInputChange} />
             Hotel
           </label>
         </form>
         <form>
           <label>
-            <input name="isGoing" type="checkbox"  onChange={this.handleInputChange} />
+            <input name="isGoing" type="checkbox" onChange={this.handleInputChange} />
             Banquet Hall
           </label>
         </form>
@@ -73,7 +59,7 @@ class Filter extends Component {
         </form>
         <form>
           <label>
-            <input name="isGoing" type="checkbox"  onChange={this.handleInputChange} />
+            <input name="isGoing" type="checkbox" onChange={this.handleInputChange} />
             Decoration
           </label>
         </form>
@@ -116,20 +102,20 @@ class Filter extends Component {
           </label>
         </form>
         <form>
-        <input name="isGoing" type="checkbox"  onChange={this.handleInputChange} />
+          <input name="isGoing" type="checkbox" onChange={this.handleInputChange} />
           <label> WIFI </label>
         </form>
 
         <form>
           <label>
             <input name="isGoing" type="checkbox" onChange={this.handleInputChange} />
-             TV
+            TV
           </label>
         </form>
         <form>
           <label>
-            <input name="isGoing" type="checkbox"  onChange={this.handleInputChange} />
-             Parking
+            <input name="isGoing" type="checkbox" onChange={this.handleInputChange} />
+            Parking
           </label>
         </form>
 
