@@ -67,7 +67,7 @@ class Results extends React.Component{
                      { (item.image ==='')?
                       <CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={images} waves />
 :           
-<CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={{uri:item.image}} waves />}
+<CardImage className="img-fluid"  style={{position:"relative", fontsize:"50px", zindex:"3"}} src={'http://localhost:49716/api/vendorimages/'+item.image} waves />}
             <MDBRow>
         <MDBCol size="4">	<div className="rating">
         <i className="fas fa-star-half-alt" id="star"></i>
@@ -108,7 +108,6 @@ class Results extends React.Component{
           </Card>
         </Col></MDBCol>))}
         
->>>>>>> 43547ec0128df8f07c32c1bb570ec72ea7bb1dd0
         </MDBRow>
       </div>
     )
