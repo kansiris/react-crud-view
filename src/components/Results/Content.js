@@ -11,6 +11,7 @@ import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage,
 
 class Content extends React.Component {
   render() {
+    
     return (
       <div>
         <MDBContainer style={{ marginTop: "20px" }}>
