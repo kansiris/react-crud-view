@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './Home.css';
 import convention1 from '../../images/convention1.jpg';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { Col, Row } from 'reactstrap';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
