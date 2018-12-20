@@ -39,7 +39,6 @@ class Home extends Component {
             </div>
           </div>
         </nav>
-
         <div className="row imageconvention">
           <section style={{
             backgroundImage: 'url(' + convention1 + ')', width: '100%',
