@@ -5,6 +5,7 @@
   "dependencies": {
     "mdbootstrap": "^4.5.16",
     "mdbreact": "^4.8.5-patch.1",
+    "node-modules": "^1.0.1",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
@@ -29,5 +30,17 @@
   ],
   "devDependencies": {
     "babel-plugin-jsx-control-statements": "^4.0.0"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurarameshsai/Ahwanam-React.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kurarameshsai/Ahwanam-React/issues"
+  },
+  "homepage": "https://github.com/kurarameshsai/Ahwanam-React#readme"
 }

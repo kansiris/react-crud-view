@@ -1,9 +1,10 @@
 .imageconvention {
     padding-top: 68px;
     background-position: center;
-    background-Size:cover;
+    background-Size:cover; 
     /* width:100%;
     height:700px; */
+    
 }
 .lgim{
     padding-left: 0px;
@@ -18,13 +19,21 @@
 .indiaimage{
     padding-left: 6px;
 } */
-.searchbar{
+/* .searchbar{
     padding: 100px;
     padding-top: 350px;
+} */
+.headsec
+{
+    width:101%;
 }
+/* .mask
+{
+    margin-top: 25%;
+} */
 .searchdiv{
     background-Color:white;
-    width:95%;
+    width:100%;
     height:70px;
     border-radius: 5px;
 }
@@ -64,16 +73,9 @@
     padding-left: 128px;
     /* width:100%;   */
 }
-/* .searchex{
-    width:500px;
-    height:70px;
-    padding-left:207px;
-    background-color: red;
-} */
-.searchex1{
-    width: 224px;
-    height: 70px;
-    padding-left: 15px;
+.searchexbtn{
+    width: 116%;
+    height: 100%;
 }
 
 .exploremore1
@@ -85,7 +87,21 @@
     font-size: 20px;
 
 }
- 
+.frmtxt{
+    margin-top: -2%;
+}
+.txtex
+{
+    margin-left: 10%;
+}
+ .txtex1
+ {
+    margin-left: 40%;
+ }
+ .txtex2
+ {
+    margin-left: 25%;
+ }
 .displayimages{
     background-color:#573791;
     padding:15px;
@@ -93,9 +109,11 @@
 .imagesall
 {
     justify-content: center;
-    padding: 30px;
+    padding: 0px;
 }
-
+.letstxt{
+    margin-left: 32%;
+}
 .imagestxt{
     color:white;
     font-size:13px;
@@ -107,7 +125,7 @@
 
 .maintitle{
     justify-content: center;
-    padding: 60px;
+    padding: 35px;
 }
 .ptxt
 {
@@ -125,13 +143,13 @@
 
 .txtcard{
     justify-content: center;
-    padding:70px;
+    padding:5%;
 }
-.cardimgtxt
+/* .cardimgtxt
 {
     width:100%;
     height:95%;
-}
+} */
 .cardstxt
 {
     padding: 5px;
@@ -145,44 +163,45 @@
 .cardimgs1
 {
     padding:80px;
+   
 }
-.card1
+/* .card1
 {
     height: 175px;
     width: 350px;
-}
+} */
 .cardimg
 {
     height: 175px;
-    width: 370px; 
+    width: 390px; 
 }
-.cardhghincrmnt
+/* .cardhghincrmnt
 {
     height: 225px;
     width: 350px;
-}
+} */
 .cardimghghincrmnt{
     height: 225px;
-    width: 350px;
+    width: 380px;
 }
 .cardimgs2
 {
     padding:0px; 
 }
-.twoimgs1
+ .twoimgs1
 {
     padding-top: 35px;
-}
+} 
 
-.card2{
+/* .card2{
     height: 200px;
     width: 540px; 
-}
-.cardimg2
+} */
+ .cardimg2
 {
     height: 200px;
-    width: 540px; 
-}
+    width: 600px; 
+} 
 .maincardimage
 {
     padding:80px
@@ -190,7 +209,7 @@
 .maincardimg1
 {
     width:350px;
-    height:360px;
+    height:380px;
 }
 .cardimageexamples
 {
@@ -214,4 +233,11 @@
     width:180px;
     height:50px;
      /* background-color:red;  */
+}
+.searchbar{
+    background-color: white;
+}
+
+.mask{
+    margin-top:18%;
 }
