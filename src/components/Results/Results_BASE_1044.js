@@ -4,85 +4,55 @@ import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+
 import images from '../../images/noimages.png';
+
 import { MDBCol,  MDBRow, Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
 //this is sireesh
-
-class Results1 extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={ items:[],name:'',data:'' };
-    this.handleChange = this.handleChange.bind(this);
-    this.getvendor = this.getvendor.bind(this);
-    this.updateState = this.updateState.bind(this);
-  }
-  handleChange(e){
-    this.setState({name:e.target.value})
-  }
-  
-  componentDidMount(){
-    fetch("http://localhost:49716/api/results/getall?type=Venue")
-    .then((res) => res.json())
-    .then((result) => { this.setState({items:result})})
-  }
-
-  getvendor(){
-    var search = this.state.name;
-    fetch("http://localhost:49716/api/results/search?name="+search+"&&type=Venue")
-    .then((res) => res.json)
-    .then((result) => {this.setState({items:result})})
-  }
-  updateState(e) {
-    this.setState({data: e.target.value});
- }
-    render(){
-      var i=0;
-      
-      return(<div> </div>)}}
 
 
 
 class Results extends React.Component{
   constructor(props){
     super(props);
-    this.state={ items:[],name:'',data:'' };
+    this.state = { items: [], name: '', data: '' };
     this.handleChange = this.handleChange.bind(this);
     this.getvendor = this.getvendor.bind(this);
     this.updateState = this.updateState.bind(this);
   }
-  handleChange(e){
-    this.setState({name:e.target.value})
+  handleChange(e) {
+    this.setState({ name: e.target.value })
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     fetch("http://localhost:49716/api/results/getall?type=Venue")
-    .then((res) => res.json())
-    .then((result) => { this.setState({items:result})})
+      .then((res) => res.json())
+      .then((result) => { this.setState({ items: result }) })
   }
 
-  getvendor(){
+  getvendor() {
     var search = this.state.name;
-    fetch("http://localhost:49716/api/results/search?name="+search+"&&type=Venue")
-    .then((res) => res.json)
-    .then((result) => {this.setState({items:result})})
+    fetch("http://localhost:49716/api/results/search?name=" + search + "&&type=Venue")
+      .then((res) => res.json)
+      .then((result) => { this.setState({ items: result }) })
   }
+
+
   updateState(e) {
-    this.setState({data: e.target.value});
- }
-    render(){
-      var i=0;
-      
-      return(
-        <div>
+    this.setState({ data: e.target.value });
+  }
 
-        Available Vendors
-        <br/>
-       <input type="text" placeholder="Search Vendor" value={this.state.name} onChange={this.handleChange}/>
-       <input type="button" value="search" onClick={this.getvendor}/>
-      
-
-
-          <MDBRow  style={{ marginBottom: "1rem",}}>
+  render() {
+    var i = 0;
+    return (
+      <div>
+        {/* Available Vendors */}
+        {/* <Checkbox value="accepted" label="I agree to the terms and conditions" /> */}
+        <br />
+        <input type="text" placeholder="Search Vendor" value={this.state.name} onChange={this.handleChange} />
+        <input type="button" value="search" onClick={this.getvendor} className="btn btn-primary btn-sm waves-effect waves-light" />
+        <MDBRow style={{ marginBottom: "1rem", }}>
+          
           {this.state.items.map(item => 
               (
        
@@ -115,9 +85,9 @@ class Results extends React.Component{
             <CardBody style={{ padding: "0"}}>
              
             
-              <h10 className="card-title" id="name">{item.BusinessName}
+              <h6 className="card-title" id="name">{item.BusinessName}
           <i className="fas fa-map-marker-alt" style={{color: "red",paddingLeft: "22%"}}></i>
-          {item.Landmark}, {item.City}</h10>
+          {item.Landmark}, {item.City}</h6>
   <div className="row">
      <div className="card-text" style={{paddingLeft: "7%",fontsize: "11px",fontweight: "800",fontfamily: "lato"}}> Veg/Plate
         <strike className="strikeout">₹{item.cost1}</strike>
@@ -138,9 +108,10 @@ class Results extends React.Component{
           </Card>
         </Col></MDBCol>))}
         
+>>>>>>> 43547ec0128df8f07c32c1bb570ec72ea7bb1dd0
         </MDBRow>
-          </div>
-      )
-    }
+      </div>
+    )
   }
-  export default Results;
+}
+export default Results;

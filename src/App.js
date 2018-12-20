@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Filter from './components/Results/Filter';
-import Header from './components/Results/Header';
-import Results from './components/Results/Results';
-import Content from './components/Results/Content';
-import resultsside from './components/Results/resultsside';
+import Home from './components/Home/Home';
+// import Filter from './components/Results/Filter';
+// import Header from './components/Results/Header';
+// import Results from './components/Results/Results';
+// import Content from './components/Results/Content';
 // import "font-awesome/css/font-awesome.min.css";
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import "mdbreact/dist/css/mdb.css";
@@ -15,8 +15,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Content />
+        {/* <Header />
+        <Content /> */}
+        <Home/>
       </div>
     );
   }
