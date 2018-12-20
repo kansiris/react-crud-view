@@ -6,19 +6,9 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
-// import { Checkbox } from 'mdbreact';
 
 class Results extends React.Component {
   constructor(props) {
-
-import images from '../../images/noimages.png';
-
-import { MDBCol,  MDBRow, Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
-
-
-
-class Results extends React.Component{
-  constructor(props){
     super(props);
     this.state = { items: [], name: '', data: '' };
     this.handleChange = this.handleChange.bind(this);
@@ -29,17 +19,17 @@ class Results extends React.Component{
     this.setState({ name: e.target.value })
   }
 
-  allvendors(){
+  allvendors() {
     fetch("http://localhost:49716/api/results/getall?type=Venue")
       .then((res) => res.json())
       .then((result) => { this.setState({ items: result }) })
   }
 
-  onClick(){
+  onClick() {
     var search = this.state.name;
     fetch("http://localhost:49716/api/results/search?name=" + search + "&&type=Venue")
-    .then((res) => res.json())
-    .then((result) => this.setState({ items : result }))
+      .then((res) => res.json())
+      .then((result) => this.setState({ items: result }))
   }
 
   render() {
@@ -99,4 +89,5 @@ class Results extends React.Component{
     )
   }
 }
+
 export default Results;
