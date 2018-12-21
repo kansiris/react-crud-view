@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
-import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
+import {  MDBCol,  MDBRow,  Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';
 
 class Results extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [], name: '', data: '' };
+    this.state = { items: [], name: '', data: '',location : '',eventtype:'',guests:'',eventdate:'' };
     this.handleChange = this.handleChange.bind(this);
     this.onClick = this.onClick.bind(this);
+this.state.location = localStorage.getItem('location');
+this.state.eventtype = localStorage.getItem('eventtype');
+this.state.guests = localStorage.getItem('guests');
+this.state.eventdate = localStorage.getItem('eventdate');
+if(this.state.location ===''){
     this.allvendors();
+}
+else{
+  this.alsearch();
+}
   }
   handleChange(e) {
     this.setState({ name: e.target.value })
   }
+  alsearch(){
+    fetch("http://localhost:49716/api/results/getallsearch?loc=" + this.state.location + "&&eventtype=" + this.state.eventtype + "&&count=" + this.state.guests + "&&date=" + this.state.eventdate)
+    .then((res) => res.json())
+    .then((res) => { this.setState({ items: res }) })
 
+  }
   allvendors() {
     fetch("http://localhost:49716/api/results/getall?type=Venue")
       .then((res) => res.json())

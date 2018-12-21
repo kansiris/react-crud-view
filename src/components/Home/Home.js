@@ -1,17 +1,54 @@
 import React, { Component } from 'react';
 import './Home.css';
 import convention1 from '../../images/convention1.jpg';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { Button, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
+import {Card,  CardImage} from 'mdbreact';
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
-import { Fa } from "mdbreact";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import Routes from '../../routes';
+
+
 
 class Home extends Component {
+  
+constructor (){
+super();
+this.state = {
+  location : '',eventtype:'',guests:'',eventdate:'',result:'',ks:{}
+};
+}
 
+onChange=(e) => {
+  const state =this.state
+  state[e.target.name] = e.target.value;
+  this.setState(state);
+}
+
+handleSelectChange = (event) => {
+  this.setState({
+    result: event.target.value
+  })
+}
+
+onSubmit=(e) =>{
+  e.preventDefault();
+  localStorage.removeItem('location');
+  localStorage.removeItem('eventtype');
+  localStorage.removeItem('guests');
+  localStorage.removeItem('eventdate');
+  const  {location,eventtype,guests,eventdate} = this.state ;
+    localStorage.setItem('location',this.state.location);
+    localStorage.setItem('eventtype',this.state.eventtype);
+    localStorage.setItem('guests',this.state.guests);
+    localStorage.setItem('eventdate',this.state.eventdate);
+    this.setState({message:''});
+    this.props.history.push("/Results")
+ }
+
+  
   render() {
+    const{location,eventtype,guests,eventdate} = this.state;
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark fixed-top -navbar">
@@ -45,21 +82,22 @@ class Home extends Component {
             height: '550px'
           }}>
             <div className="mask  d-flex justify-content-center align-items-center">
+            <form onSubmit={this.onSubmit}>
               <div className="container">
                 <div className="row searchbar container-fluid" >
                   <div className="col-md-2" >
-                    <form className="form-inline mt-4 mb-4">
-                      <i class="fa fa-1x fa-map-marker"></i>
+                    <div className="form-inline mt-4 mb-4">
+                      <i className="fa fa-1x fa-map-marker"></i>
                       <input
                         className="form-control form-control-sm ml-3 w-75"
                         type="text"
-                        placeholder="Hyderbad" id="location" name="location" style={{ border: 'none' }} />
-                    </form>
+                        placeholder="Hyderabad" id="location" name="location" style={{ border: 'none' }} value={location}  onChange={this.onChange} required/>
+                    </div>
                   </div>
                   <div className="col-md-3" >
-                    <form className="form-inline mt-4 mb-4">
-                      <i class="fa fa-1x fa-list"></i>
-                      <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }} >
+                    <div className="form-inline mt-4 mb-4">
+                      <i className="fa fa-1x fa-list"></i>
+                      <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }}  onClick={this.handleSelectChange} required>
                         <option value="select">Select Event</option>
                         <option value="Wedding">Wedding</option>
                         <option value="Engagement">Engagement</option>
@@ -67,31 +105,35 @@ class Home extends Component {
                         <option value="Corporate">Corporate</option>
                         <option value="Baby Function">Baby Function</option>
                         <option value="other">other</option>
+                        {this.state.result}
                       </select>
-                    </form>
+                    </div>
                   </div>
                   <div className="col-md-2" >
-                    <form className="form-inline mt-4 mb-4">
-                      <i class="fa fa-1x fa-users"></i>
-                      <input className="form-control form-control-sm ml-3 w-75" type="number" id="guestes" name="gusets" placeholder="Guests" style={{ border: 'none' }} />
-                    </form>
+                    <div className="form-inline mt-4 mb-4">
+                      <i className="fa fa-1x fa-users"></i>
+                      <input className="form-control form-control-sm ml-3 w-75" type="number" id="guests" name="guests"
+                       placeholder="Guests" style={{ border: 'none' }}  value={guests}  onChange={this.onChange} required/>
+                    </div>
                   </div>
                   <div className="col-md-3" >
-                    <form className="form-inline mt-4 mb-4">
-                      <i class="fa fa-1x fa-calendar-check-o"></i>
+                    <div className="form-inline mt-4 mb-4">
+                      <i className="fa fa-1x fa-calendar-check-o"></i>
                       <input
                         className="form-control form-control-sm ml-3 w-75"
-                        type="text"
+                        type="date" id="eventdate" name="eventdate"
                         placeholder="Date" style={{ border: 'none' }}
+                        value={eventdate}  onChange={this.onChange} required
                       />
-                    </form>
+                    </div>
                   </div>
                   <div className="col-md-2" >
-                    <button type="button" className="btn btn-danger btn-md searchexbtn" style={{ marginTop: '0px' }}>Search</button>
+                    <button type="submit" className="btn btn-danger btn-md searchexbtn" style={{ marginTop: '0px' }}>Search</button>
                   </div>
                 </div>
 
               </div>
+              </form>
             </div>
           </section>
         </div>
@@ -272,7 +314,7 @@ class Home extends Component {
                     <MDBCol md="8">
                       <span style={{ fontSize: '14px' }}>Capacity : 150-850</span>
                     </MDBCol >
-                    <MDBCol l md="4">
+                    <MDBCol md="4">
                       <span style={{ fontSize: '15px', color: 'red' }}>Book Now</span>
                     </MDBCol >
                   </div>
@@ -315,7 +357,7 @@ class Home extends Component {
           </MDBCol>
         </div>
         <div className="row exploremore" style={{ justifyContent: 'center' }}>
-          <a href="#" className="btn btn-danger">Explore More &emsp;<i class="fa fa-arrow-right"></i></a>
+          <a href="#" className="btn btn-danger">Explore More &emsp;<i className="fa fa-arrow-right"></i></a>
         </div>
         <div className="row maintitle">
           <h1><section className="letstxt" style={{ marginLeft: '35%' }}>LET'S TALK</section>
@@ -378,9 +420,9 @@ class Home extends Component {
                   placeholder="Enter Your Requirements"
                 />
                 <br />
-                <p classNmae="text-center" >
+                <p className="text-center" >
                   <button type="submit" name="command" className="btn btn-danger">Request Call Back</button>
-                  <a href="#" className="btn btn-danger">Explore More &emsp;<i class="fa fa-arrow-right"></i></a>
+                  <a href="#" className="btn btn-danger">Explore More &emsp;<i className="fa fa-arrow-right"></i></a>
                   <br />
                   <br />
                   <span className="txtex" style={{ justifyContent: 'center' }}> Whatsapp or Call Ahwanam.com at 7702053510 </span>

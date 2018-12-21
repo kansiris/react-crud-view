@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-//import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
-//import { Input, MDBCol, MDBContainer, MDBRow, Button, Card, CardBody, CardImage, CardTitle, CardText, Col, MDBBtn } from 'mdbreact';
 
 
 class Filter extends Component {
@@ -23,10 +20,7 @@ class Filter extends Component {
     return (
       <div>
         <h6>Filter Service Type</h6>
-        <div className="form-check">
-          <input type="checkbox" class="form-check-input" id="materialUnchecked" />
-          <label className="form-check-label" for="materialUnchecked">Material unchecked</label>
-        </div>
+       
         <form>
           <label>
             <input name="Hotel" type="checkbox" onChange={this.handleInputChange} />
