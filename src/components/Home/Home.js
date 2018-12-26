@@ -5,17 +5,16 @@ import {Card,  CardImage} from 'mdbreact';
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, Button, Modal, ModalBody,  ModalFooter  } from 'mdbreact';
 import Routes from '../../routes';
-
-
+import Header from '../Results/Header';
 
 class Home extends Component {
   
 constructor (){
 super();
 this.state = {
-  location : '',eventtype:'',guests:'',eventdate:'',result:'',ks:{}
+  location : '',eventtype:'',guests:'',eventdate:'',result:'', modal2: false,
 };
 }
 
@@ -24,7 +23,12 @@ onChange=(e) => {
   state[e.target.name] = e.target.value;
   this.setState(state);
 }
-
+toggle(nr) {
+  let modalNumber = 'modal' + nr
+  this.setState({
+    [modalNumber]: !this.state[modalNumber]
+  });
+}
 handleSelectChange = (event) => {
   this.setState({
     result: event.target.value
@@ -51,7 +55,8 @@ onSubmit=(e) =>{
     const{location,eventtype,guests,eventdate} = this.state;
     return (
       <div>
-        <nav className="navbar navbar-expand-sm navbar-dark fixed-top -navbar">
+       <Header/>
+       {/* <nav className="navbar navbar-expand-sm navbar-dark fixed-top -navbar">
           <div className="container col-md-6 lgim">
             <a className="navbar-brand" href="#">
               <img src={require('../../images/logo.png')} style={{ width: '35%' }} />
@@ -60,10 +65,12 @@ onSubmit=(e) =>{
           <div className="col-md-6 " >
             <div className="row">
               <div className="col-md-2" style={{ marginTop: '6px' }}>
-                <span> <a href="#0" style={{ fontsize: '16px', fontfamily: 'lato', fontweight: '600' }}>Login/Register</a></span>
+           <span> <a href='/Login' style={{ fontsize: '16px', fontfamily: 'lato', fontweight: '600' }}>Login/Register</a></span>
+
+             {/*   <span> <a onClick={() => this.toggle(2)} style={{ fontsize: '16px', fontfamily: 'lato', fontweight: '600' }}>Login/Register</a></span>*
               </div>&nbsp;
             <div className="col-md-3" style={{ marginTop: '6px' }}>
-                <span> <a href="#0" style={{ fontsize: '16px', fontfamily: 'lato', fontweight: '600' }}>Pathner&nbsp;Registeration</a></span>
+                <span> <a href="#0" style={{ fontsize: '16px', fontfamily: 'lato', fontweight: '600' }}>Partner&nbsp;Registeration</a></span>
               </div>&nbsp;&nbsp;
             <div className="col-md-5">
                 <div className="row">
@@ -75,7 +82,18 @@ onSubmit=(e) =>{
               </div>
             </div>
           </div>
-        </nav>
+        </nav> */}
+        <Modal isOpen={this.state.modal2} toggle={() => this.toggle(2)}>
+            <ModalBody>
+          
+          
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={() => this.toggle(2)}>Close</Button>
+            <Button color="primary">Save changes</Button>
+          </ModalFooter>
+        </Modal>
         <div className="row imageconvention">
           <section style={{
             backgroundImage: 'url(' + convention1 + ')', width: '100%',

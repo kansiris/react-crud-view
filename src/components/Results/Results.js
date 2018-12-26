@@ -26,15 +26,15 @@ else{
     this.setState({ name: e.target.value })
   }
   alsearch(){
-    fetch("http://localhost:49716/api/results/getallsearch?loc=" + this.state.location + "&&eventtype=" + this.state.eventtype + "&&count=" + this.state.guests + "&&date=" + this.state.eventdate)
+    fetch("http://localhost:49716/api/results/getallsearch?type=Venue&&loc=" + this.state.location + "&&eventtype=" + this.state.eventtype + "&&count=" + this.state.guests + "&&date=" + this.state.eventdate)
     .then((res) => res.json())
-    .then((res) => { this.setState({ items: res }) })
+    .then((res) => { this.setState({items:res})})
 
   }
   allvendors() {
     fetch("http://localhost:49716/api/results/getall?type=Venue")
       .then((res) => res.json())
-      .then((result) => { this.setState({ items: result }) })
+            .then((result) => { this.setState({ items: result }) })
   }
 
   onClick() {
@@ -70,9 +70,9 @@ else{
                   </MDBRow> */}
                   <CardBody style={{ padding: "0" }}>
                     <CardText>
-                      <h10 className="card-title" id="name">{item.BusinessName}
+                      <h6 className="card-title" id="name">{item.BusinessName}
                         <i className="fa fa-map-marker-alt" style={{ color: "red", paddingLeft: "22%" }}></i>
-                        {item.Landmark}, {item.City}</h10>
+                        {item.Landmark}, {item.City}</h6>
                       <div className="row">
                         <div className="card-text col-md-4">Veg</div>
                         <div className="col-md-8">

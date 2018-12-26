@@ -6,23 +6,67 @@ import "mdbreact/dist/css/mdb.css";
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 
 class Header extends React.Component {
-  state = {
-    isOpen: false,
+  constructor(){
+    super();
+  this.state = {
+    name:''
   };
-  toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
-  render() {
+   this.state.name = localStorage.getItem('UserName');
+   
+ }
+ logout = ()=>{
+  localStorage.removeItem('UserName');
+  localStorage.removeItem('UserID');
+  window.location.reload();
+ }
+ 
+ renderButton1() {
+ 
+    if(this.state.name !== ''&& this.state.name !== null) {
     return (
       <div>
-        <Navbar color="white" dark expand="md" style={{ marginTop: "0px" }}>
-          <NavbarBrand>
+     
+              <NavItem>
+                <Dropdown>
+                  <DropdownToggle nav caret>
+                    <div className="d-none d-md-inline"> <strong className="black-text">{this.state.name}</strong></div>
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-default" right>
+                    <DropdownItem href="#!" > <strong className="black-text">Profile</strong></DropdownItem>
+                    <DropdownItem href="#!"onClick={this.logout}> <strong className="black-text">LogOut</strong></DropdownItem>
+                 </DropdownMenu>
+                </Dropdown>
+              </NavItem>
+                   </div>
+    );
+  } else{
+    return (
+      <div>
+    
+              <NavLink to="/Login"> <strong className="black-text">Login/Register</strong></NavLink>
+              
+      </div>
+    )
+
+  }}
+ 
+
+
+render(){ 
+
+  
+  return(<div>
+
+<Navbar color="white" dark expand="md" style={{ marginTop: "0px" }}>
+          <NavbarBrand><a href='/'>
             <img style={{ height: "27px" }} src='http://design.maa-aahwanam.com/responsivedesign/img/logo.png' />
-            <strong className="black-text">Ahwanam</strong>
+            <strong className="black-text">Ahwanam</strong></a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleCollapse} />
-          <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+          <Collapse id="navbarCollapse3" navbar>
             <NavbarNav left style={{ marginLeft: "50%" }}>
               <NavItem active>
-                <NavLink to="#!"> <strong className="black-text">Login/Register</strong></NavLink>
+{this.renderButton1()}
               </NavItem>
               <NavItem>
                 <NavLink to="#!"> <strong className="black-text"><button type="button" className="btn btn-danger btn-sm waves-effect waves-light" style={{
@@ -48,8 +92,7 @@ class Header extends React.Component {
             </NavbarNav>
           </Collapse>
         </Navbar>
-      </div>
-    );
-  }
+    
+</div>);}
 }
 export default Header;
