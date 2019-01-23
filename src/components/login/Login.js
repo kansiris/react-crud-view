@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './login.css';
+import Header from '../Results/Header';
 class Login extends Component {
   render() {
-    return (
+    return (<div>
+      <Header/>
+ 
       <div className="bg">
       <h1 className="heading">Sign In/Register</h1> 
       <div className="container" style={{backgroundColor:"white"}}>
@@ -60,8 +63,8 @@ class Login extends Component {
         </div>
       </section>
       </div>
-      <h1>sadadffdsf</h1>
-      </div>
+      {/* <h1>sadadffdsf</h1> */}
+      </div></div>
     );
   }
 }

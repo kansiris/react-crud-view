@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import './shoppingcart.css';
+import Header from '../Results/Header'
 class Shoppingcart extends Component {
     render() {
         return (
+            <div>
+                <Header/>
+           
+            <div className="bg">
+            <h1 className="heading">Shopping Cart</h1>
+            <div className="container" style={{backgroundColor:"white"}}>
             <div className="row">
                 <div className="col-sm-8 col-md-8">
                     <table className="table">
@@ -55,7 +62,7 @@ class Shoppingcart extends Component {
                     </table>
                     <div className="row">
                         <div className="col-sm-4 col-md-4">
-                            <button className="btntxt">
+                            <button className="updatebtn">
                                 <i className="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Continue Shopping
                         </button>
                         </div>
@@ -63,7 +70,7 @@ class Shoppingcart extends Component {
                             <input type="text" id="Coupon code" name="Coupon code" placeholder="Coupon code" className="form-control" />
                         </div>
                         <div className="col-sm-4 col-md-4">
-                            <button className="btntxt">
+                            <button className="updatebtn">
                                 Update cart &nbsp;<i className="fa fa-refresh" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -77,8 +84,13 @@ class Shoppingcart extends Component {
                          </li>
                         <li className="list-group-item">Total:</li>
                     </ul>
-                    <button>Checkout</button>
+                    <button className="c">Checkout</button>
                 </div>
+            </div>
+            </div>
+            <h1>dasdfsf</h1>
+            </div>
+          
             </div>
         );
 
