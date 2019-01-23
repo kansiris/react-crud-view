@@ -1,0 +1,16 @@
+.btntxt{
+    color:#0c4d6c;
+    height:80%;
+}
+.btntxt:hover{
+    background-color: #0c4d6c;
+    color: white;
+}
+.selectnumber{
+    display: block;
+    float: left;
+    margin-right: 4px;
+}
+.form-control1{
+    width:33%
+}
