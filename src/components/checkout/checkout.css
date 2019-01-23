@@ -18,11 +18,11 @@
 .checkout-progress{
     position: relative
 }
-.active{
+/* .active{
     position: relative;
     background: #0c4d6c;
     color: #fff;
-}
+} */
 .list{
     display: table;
 }

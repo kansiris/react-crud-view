@@ -3,6 +3,7 @@ import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 
 class Header extends React.Component {
@@ -43,7 +44,7 @@ class Header extends React.Component {
     return (
       <div>
     
-              <NavLink to="/Login"> <strong className="black-text">Login/Register</strong></NavLink>
+              <NavLink to="/Login"> <strong className="black-text">Login<i className="fa fa-lock" aria-hidden="true"></i></strong></NavLink>
               
       </div>
     )
@@ -59,8 +60,8 @@ render(){
 
 <Navbar color="white" dark expand="md" style={{ marginTop: "0px" }}>
           <NavbarBrand><a href='/'>
-            <img style={{ height: "27px" }} src='http://design.maa-aahwanam.com/responsivedesign/img/logo.png' />
-            <strong className="black-text">Ahwanam</strong></a>
+            <img style={{ height: "27px" }} src='../c' />
+            <strong className="black-text">My Village Foods</strong></a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleCollapse} />
           <Collapse id="navbarCollapse3" navbar>
@@ -68,13 +69,13 @@ render(){
               <NavItem active>
 {this.renderButton1()}
               </NavItem>
-              <NavItem>
-                <NavLink to="#!"> <strong className="black-text"><button type="button" className="btn btn-danger btn-sm waves-effect waves-light" style={{
+              <NavItem>          
+                {/* <NavLink to="#!"> <strong className="black-text"><button type="button" className="btn btn-danger btn-sm waves-effect waves-light" style={{
                   fontsize: "11px", fontweight: "1000"
-                }}>Call: +91 7032199007</button></strong></NavLink>
+                }}>Call: +91 7032199007</button></strong></NavLink> */}
               </NavItem>
               <NavItem>
-                <NavLink to="#!"> <img src='http://design.maa-aahwanam.com/responsivedesign/img/india.png' /></NavLink>
+                {/* <NavLink to="#!"> <img src='http://design.maa-aahwanam.com/responsivedesign/img/india.png' /></NavLink> */}
               </NavItem>
               <NavItem>
                 <Dropdown>
