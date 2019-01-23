@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './results.css';
+
+import './vresults.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "mdbreact";
 
-class Header extends React.Component {
+class VHeader extends React.Component {
   constructor(){
     super();
   this.state = {
@@ -14,12 +15,6 @@ class Header extends React.Component {
    this.state.name = localStorage.getItem('UserName');
    
  }
-
-toggleCollapse = () => {
-  this.setState({ isOpen: !this.state.isOpen });
-}
-
-
  logout = ()=>{
   localStorage.removeItem('UserName');
   localStorage.removeItem('UserID');
@@ -65,8 +60,8 @@ render(){
 
 <Navbar color="white" dark expand="md" style={{ marginTop: "0px" }}>
           <NavbarBrand><a href='/'>
-            <img style={{ height: "27px" }} src='' />
-            <strong className="black-text">MY VILLAGE RICE</strong></a>
+            <img style={{ height: "27px" }} src='http://design.maa-aahwanam.com/responsivedesign/img/logo.png' />
+            <strong className="black-text">Ahwanam</strong></a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleCollapse} />
           <Collapse id="navbarCollapse3" navbar>
@@ -101,4 +96,4 @@ render(){
     
 </div>);}
 }
-export default Header;
+export default VHeader;

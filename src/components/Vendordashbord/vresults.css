@@ -1,0 +1,29 @@
+.card-title{
+  font-weight: 600;
+  color: black;
+}
+
+.card-text{
+  /* padding-left: 7%; */
+  font-weight: 800;
+  font-family: lato;
+}
+
+.strikeout{
+  color: red;
+  padding-Left: 80px;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: roboto;
+}
+
+.price{
+  width: 25%;
+  border: 1px dashed;
+  color: #543791;
+   text-align: center;
+   font-size: 12px;
+   font-weight: 900;
+   margin-Left: 1%;
+   font-family: roboto;
+}

@@ -214,7 +214,8 @@ onFailure={responseGoogle}
     autoLoad={false}
     fields="name,email,picture"
     callback = {responseFacebook}
-    /></div>
+    />
+    </div>
   </div>
     </div>
     </div>
