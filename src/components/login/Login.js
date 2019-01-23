@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import FaceBookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
+// import FaceBookLogin from 'react-facebook-login';
+// import GoogleLogin from 'react-google-login';
 import {PostData} from './postdata';
 import {Redirect} from 'react-router-dom';
 import Header from '../Results/Header';
@@ -199,7 +199,7 @@ return(
     {this.renderButton()}
   </div>
 
-  <div className="row">
+  {/* <div className="row">
     <div className="col-md-12"><GoogleLogin
 clientId="601498937999-b0hf70ivcp5vo9u10gkqqgneirnn6quq.apps.googleusercontent.com"
 buttonText="Login with Google"
@@ -207,15 +207,15 @@ onSuccess={responseGoogle}
 onFailure={responseGoogle}
 
 /></div>
-  </div>
-  <div className="row">
+  </div> */}
+  {/* <div className="row">
     <div className="col-md-12"><FaceBookLogin style={{ position: "relative", fontsize: "50px", zindex: "3" }}
     appId="1210420135768170"
     autoLoad={false}
     fields="name,email,picture"
     callback = {responseFacebook}
     /></div>
-  </div>
+  </div> */}
     </div>
     </div>
 </div> 
