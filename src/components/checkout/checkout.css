@@ -1,0 +1,28 @@
+.txt{color: #0c4d6c;}
+.cpage{
+    padding-top: 5%;
+    padding-left: 2%;
+}
+.form-control{
+    width: 100%;
+    height: calc(3.25rem + 2px);
+}
+.submit{
+    background-color:#0c4d6c;
+    color:white;
+}
+.heading{
+    padding-left: 10%;
+    color: grey;
+}
+.checkout-progress{
+    position: relative
+}
+.active{
+    position: relative;
+    background: #0c4d6c;
+    color: #fff;
+}
+.list{
+    display: table;
+}
