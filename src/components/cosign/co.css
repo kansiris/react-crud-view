@@ -1,0 +1,24 @@
+.txt{color: #0c4d6c;}
+.btntxt{
+    color:#0c4d6c;
+    height:120%;
+}
+.btntxt:hover{
+    background-color: #0c4d6c;
+    color: white;
+}
+.t{
+    background-color:#0c4d6c;
+    color:white;
+}
+.form-control{
+    width: 60%;
+    height: calc(3.25rem + 2px);
+}
+.checkout{
+    padding-top: 5%;
+    padding-left: 8%;
+}
+.txt1{
+    margin-top:10%;
+}

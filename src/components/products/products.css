@@ -1,0 +1,12 @@
+.badge{
+    float: right;
+    background-color: gray;
+    color: white
+}
+.box:hover{
+    background-color: #0c4d6c;
+    color:white;
+}
+.details{
+    padding-left: 15%;
+}
