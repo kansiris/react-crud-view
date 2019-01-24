@@ -75,18 +75,16 @@ render(){
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{ marginLeft: "10%" }}>
     <ul className="navbar-nav mr-auto">
-      
-      <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          SHOP
-        </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="#">Action</a>
-          <a className="dropdown-item" href="#">Another action</a>
-          <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }}  onClick={this.handleSelectChange} required>
+                        <option value="select">Shop Products</option>
+                        <option value="Wedding">Basmati</option>
+                        <option value="Engagement">Matta</option>
+                        <option value="BirthDay">Ponni</option>
+                        <option value="Corporate">Sona-masoori</option>
+                        <option value="Baby Function">Idly rice</option>
+                        <option value="other">other</option>
+                        {this.state.result}
+                      </select>
       <li className="nav-item">
         <a className="nav-link" href="#">ABOUT <span className="sr-only">(current)</span></a>
       </li>
@@ -99,7 +97,7 @@ render(){
     </ul>
     <form className="form-inline my-2 my-lg-0">
     <a href="/Login"><strong className="black-text">Login <i className="fa fa-lock" aria-hidden="true"></i></strong></a>
-    {/* <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> */}
+    <a href="/Shopingcart" style={{color:'black'}}> <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
