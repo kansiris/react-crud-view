@@ -1,5 +1,4 @@
 
-import React,{Component} from 'react';
 // import FaceBookLogin from 'react-facebook-login';
 // import GoogleLogin from 'react-google-login';
 import {PostData} from './postdata';
@@ -10,9 +9,9 @@ import './login.css';
 import Header from '../Results/Header';
 class Login extends Component {
   render() {
-    return (<div>
+    return (
+    <div>
       <Header/>
- 
       <div className="bg">
       <h1 className="heading">Sign In/Register</h1> 
       <div className="container" style={{backgroundColor:"white"}}>
@@ -70,81 +69,8 @@ class Login extends Component {
         </div>
       </section>
       </div>
-      {/* <h1>sadadffdsf</h1> */}
       </div></div>
     );
   }
-
-
-
-
-
-// render(){
-// if(this.state.redirect || sessionStorage.getItem('userData'))
-// {
-//     return(<Redirect to={'/home'}/>)
-// }
-// const responseFacebook = (response) => {
-// console.log('facebook console');
-// console.log(response);
-// this.signup(response,'facebook');
-// }
-
-// const responseGoogle = (response) =>{
-// console.log("google console");
-// console.log(response);
-// this.signup(response,'google');
-// }
-// var shown = {
-//     display: this.state.shown ? "block" : "none"
-    
-// };
-
-// var hidden = {
-//     display: this.state.hidden ? "block" : "none"
-// }
-// return(
-// <div>
-//     <Header/>
-//     <h2 id = "welcome"> </h2>
-//     <div className="container">
-//   <div className="row">
-//     <div className="col-md-3">
-//     <div  >
-//     {this.renderButton()}
-//   </div>
-
-//   {/* <div className="row">
-//     <div className="col-md-12"><GoogleLogin
-// clientId="601498937999-b0hf70ivcp5vo9u10gkqqgneirnn6quq.apps.googleusercontent.com"
-// buttonText="Login with Google"
-// onSuccess={responseGoogle}
-// onFailure={responseGoogle}
-
-// /></div>
-//   </div> */}
-//   {/* <div className="row">
-//     <div className="col-md-12"><FaceBookLogin style={{ position: "relative", fontsize: "50px", zindex: "3" }}
-//     appId="1210420135768170"
-//     autoLoad={false}
-//     fields="name,email,picture"
-//     callback = {responseFacebook}
-//     /></div>
-//   </div> */}
-//     </div>
-//     </div>
-// </div> 
-
-
-
-
-
-    // </div>
-
-// );
-
-// }
-
-
 }
 export default Login;
