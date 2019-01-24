@@ -10,7 +10,12 @@
 .details{
     padding-left: 15%;
 }
- .addbtn{
-    border-color: #e34f30;
-    color: red;
+.add{
+    border: 2px solid#e34f30;
+    color:#e34f30;
+
+}
+ .add:hover{
+   background-color: #e34f30;
+    color:white;
 } 

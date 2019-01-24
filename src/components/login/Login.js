@@ -7,6 +7,7 @@ import {Redirect} from 'react-router-dom';
 import React, { Component } from 'react';
 import './login.css';
 import Header from '../Results/Header';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 
 class Login extends Component {
@@ -102,6 +103,7 @@ Savedetails(e)
                   </button>
                   <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
                 </div>
+
               </div>
             </form>
           </div>
