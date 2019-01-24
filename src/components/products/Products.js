@@ -32,7 +32,7 @@ render(){
                               <div><a href='\'>fdgfdgg</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn">Add to cart</a></div>
+                           <div className="addbtn"><a href='\' className="btn">Add to cart</a></div>
                       </div>
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
@@ -116,7 +116,7 @@ render(){
                               <div><a href='\'>fdgfdgg</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn">Add to cart</a></div>
+                           <div><a href='\' className="addbtn">Add to cart</a></div>
                       </div>
                  </div>
 
