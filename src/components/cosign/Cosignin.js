@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './co.css';
+import Header from '../Results/Header';
 class Cosignin extends Component {
     render() {
-        return (
+        return (<div>
+            <Header/>
+            <div className="bg">
+            <h1 className="heading">CheckOut Sign In</h1>
+            <div className="container" style={{backgroundColor:"white"}}>
+           
             <div className="row checkout">
                 <div className="col-sm-5 col-md-5">
                     <form>
@@ -43,6 +49,11 @@ class Cosignin extends Component {
 
                 </div>
             </div>
+            </div>
+            <h1>sadfsfd</h1>
+            </div>
+            </div>
+      
         );
     }
 }

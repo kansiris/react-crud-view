@@ -4,7 +4,7 @@
     padding-left: 2%;
 }
 .form-control{
-    width: 100%;
+    width: 85%;
     height: calc(3.25rem + 2px);
 }
 .submit{
@@ -18,11 +18,14 @@
 .checkout-progress{
     position: relative
 }
-.active{
+/* .active{
     position: relative;
     background: #0c4d6c;
     color: #fff;
-}
+} */
 .list{
     display: table;
+}
+.bg{
+    padding-top: 4%;
 }

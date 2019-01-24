@@ -1,8 +1,8 @@
-.btntxt{
+.updatebtn{
     color:#0c4d6c;
     height:80%;
 }
-.btntxt:hover{
+.updatebtn:hover{
     background-color: #0c4d6c;
     color: white;
 }
@@ -13,4 +13,9 @@
 }
 .form-control1{
     width:33%
+}
+.c{
+    background-color: #e34f30;
+    color: white;
+    width: 100%;
 }
