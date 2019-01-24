@@ -7,10 +7,56 @@ import {Redirect} from 'react-router-dom';
 import React, { Component } from 'react';
 import './login.css';
 import Header from '../Results/Header';
+
+
 class Login extends Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state={
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:''
+
+    }
+    this.handleChange=this.handleChange.bind(this);
+    this.Savedetails=this.Savedetails.bind(this);
+  }
+
+  handleChange(e) {
+    const state=this.state
+  state[e.target.id]=e.target.value;
+  this.setState(state);
+}
+Savedetails(e)
+{
+   const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
+   e.preventDefault();
+   fetch('http://localhost:64017/api/Customer/UserRegister',{
+    method: 'POST',
+    body:JSON.stringify({Firstname:Firstname,Lastname:Lastname,Email:Email,Password:Password,confirmpassword:confirmpassword}),
+     headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  }
+   }).then((response) => response.json())
+   .then((responseJson) => {
+  
+     window.location.reload();
+           
+          this.setState({Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:''});
+          return responseJson.success;
+          alert('success');
+   })
+   .catch((error) => {
+     console.error(error);
+     alert('failed');
+   });
+   
+}
+
   render() {
     return (
-    <div>
+    <div className="ln">
       <Header/>
       <div className="bg">
       <h1 className="heading">Sign In/Register</h1> 
@@ -22,10 +68,10 @@ class Login extends Component {
               <h2 className="txt">Sign In</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Email" id="Email" name="Email" className="form-control" />
+                  <input type="text" placeholder="Email" id="Emailln" name="Emailln" className="form-control" />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Password" id="Password" name="Password" className="form-control" />
+                  <input type="text" placeholder="Password" id="Passwordln" name="Passwordln" className="form-control" />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
                   <button className="btntxt">
@@ -41,25 +87,25 @@ class Login extends Component {
               <h2 className="txt">Register a New Account</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="First Name" name="First Name" placeholder="First Name" className="form-control" />
+                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Last Name" name="last Name" placeholder="Last Name" className="form-control" />
+                  <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="form-control" onChange={this.handleChange} value={this.state.LastName} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" />
+                  <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" onChange={this.handleChange} value={this.state.Email} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="password" id="Password" name="Password" placeholder="Password" className="form-control" />
+                  <input type="password" id="Password" name="Password" placeholder="Password" className="form-control" onChange={this.handleChange} value={this.state.Password} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="password" id="Confirm Password" name="Confirm Password" placeholder="Confirm Password" className="form-control" />
+                  <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   <input type="checkbox" /> &nbsp; Recieve promotional emails
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <button className="submit">
+                  <button className="submit" onClick={this.Savedetails}>
                     Submit &nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>
                   </button>
                 </div>
