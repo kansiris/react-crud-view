@@ -42,7 +42,7 @@ logindetails(e)
   }).then((response) => response.json())
   .then((responseJson) => { 
     localStorage.setItem('Firstname',responseJson.Firstname);
-localStorage.setItem('Email',responseJson.Email);
+   localStorage.setItem('Email',responseJson.Email);
     window.location.reload();
      alert('success');
     this.setState({password:'',password:''});
@@ -94,7 +94,7 @@ Savedetails(e)
                   <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
+                  <input type="password" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
                   <button className="btntxt">

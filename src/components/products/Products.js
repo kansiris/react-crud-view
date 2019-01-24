@@ -3,7 +3,34 @@ import React,{Component} from 'react';
 import Header from '../Results/Header';
 import './products.css';
 import logo from '../../images/logo.jpg';
+
+
+
 class Products extends Component{
+
+    constructor(props)
+    {
+        super(props);
+        this.state={
+            productdetails:[],
+            id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
+            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:''
+
+        }
+    }
+
+    componentWillMount()
+    {
+       this.getproductdetails();
+    } 
+    getproductdetails()
+    {
+        fetch('http://localhost:64017/api/Product/GetAllProducts').then(res=>res.json()).then(details=>{
+         this.setState({
+            productdetails:details
+         });
+      })
+    }
 render(){
     return(
         <div>
@@ -21,110 +48,28 @@ render(){
                          <li className="list-group-item">
                           <a href='\'><span className="badge">4</span></a>dfhsgf</li>
                             <li className="list-group-item"> <a href='\'><span className="badge">4</span></a>dfhsgf</li>
-             </ul>
+                     </ul>
             </div>
             <div className="col-sm-9 col-md-9">
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4 cimg">
+            <div className="row" >
+            {
+              this.state.productdetails.map(item=>( <div className="col-sm-4 col-md-4 cimg" key={item.id}>
                           <a href='\'>
                            <img style={{ height: "100px" }} src={logo} />
                            </a>
                            <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
+                              <div><a href='\'>{item.Productname}</a></div> 
+                               <div><span>₹{item.Price}</span></div>
                            </div>
                            <div><a href='\' className="btn addbtn">Add to cart</a></div>
                       </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
+              ))}
+                    
                  </div>
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                 </div>
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                 </div>
-
             </div>
         </div>
        </div>
-        <h1>gfhthgtht</h1>
+        
         </div>
         </div> 
     );
