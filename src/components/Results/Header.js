@@ -16,6 +16,8 @@ class Header extends React.Component {
   //  this.state.name = localStorage.getItem('UserName');
    
  }
+
+
 //  logout = ()=>{
 //   localStorage.removeItem('UserName');
 //   localStorage.removeItem('UserID');
@@ -59,6 +61,8 @@ render(){
 
   
   return(
+
+
 
 <div>
 <nav className="navbar navbar-expand-lg navbar-light bg-white">
