@@ -3,6 +3,11 @@ import React,{Component} from 'react';
 import Header from '../Results/Header';
 import './products.css';
 import logo from '../../images/logo.jpg';
+import Basmati from '../../images/Basmati.jpg';
+import matta from '../../images/matta.jpg';
+import Ponni from '../../images/Ponni.jpg';
+import Rice from '../../images/Rice.jpg';
+
 class Products extends Component{
 render(){
     return(
@@ -27,108 +32,123 @@ render(){
                  <div className="row">
                       <div className="col-sm-4 col-md-4 cimg">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={Basmati} />
                            </a>
                            <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
+                              <div><a href='\'>Basmati</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
                       </div>
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={matta} />
                            </a>
                            <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
+                              <div><a href='\'>Matta</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
+                           <div><button className="btn btn-sm add" >Add To Cart</button></div>
                       </div>
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={Ponni} />
                            </a>
                            <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
+                              <div><a href='\'>Ponni</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                 </div>
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
                       </div>
                  </div>
                  <div className="row">
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={Basmati} />
                            </a>
                            <div className="details">
                               <div><a href='\'>fdgfdgg</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
                       </div>
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={Ponni} />
                            </a>
                            <div className="details">
                               <div><a href='\'>fdgfdgg</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
                       </div>
                       <div className="col-sm-4 col-md-4">
                           <a href='\'>
-                           <img style={{ height: "100px" }} src={logo} />
+                           <img style={{ height: "130px" }} src={Basmati} />
                            </a>
                            <div className="details">
                               <div><a href='\'>fdgfdgg</a></div> 
                                <div><span>$80.00</span></div>
                            </div>
-                           <div><a href='\' className="btn addbtn">Add to cart</a></div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
+                      </div>
+                 </div>
+                 <div className="row">
+                      <div className="col-sm-4 col-md-4">
+                          <a href='\'>
+                           <img style={{ height: "130px" }} src={Rice} />
+                           </a>
+                           <div className="details">
+                              <div><a href='\'>fdgfdgg</a></div> 
+                               <div><span>$80.00</span></div>
+                           </div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
+                      </div>
+                      <div className="col-sm-4 col-md-4">
+                          <a href='\'>
+                           <img style={{ height: "130px" }} src={Basmati} />
+                           </a>
+                           <div className="details">
+                              <div><a href='\'>fdgfdgg</a></div> 
+                               <div><span>$80.00</span></div>
+                           </div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
+                      </div>
+                      <div className="col-sm-4 col-md-4">
+                          <a href='\'>
+                           <img style={{ height: "130px" }} src={Rice} />
+                           </a>
+                           <div className="details">
+                              <div><a href='\'>fdgfdgg</a></div> 
+                               <div><span>$80.00</span></div>
+                           </div>
+                           <div>
+                           <button className="btn btn-sm add" >Add To Cart</button>
+                           </div>
+                         
                       </div>
                  </div>
 
             </div>
         </div>
        </div>
-        <h1>gfhthgtht</h1>
         </div>
         </div> 
     );
 }
 }
 export default Products;
-
