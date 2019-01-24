@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "axios": "^0.18.0",
-
     "bootstrap": "^4.2.1",
     "mdbootstrap": "^4.5.16",
-    "mdbreact": "^4.8.5-patch.1",
+    "mdbreact": "^4.9.0",
     "node-modules": "^1.0.1",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",

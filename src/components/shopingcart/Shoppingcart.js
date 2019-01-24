@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './shoppingcart.css';
 import Header from '../Results/Header'
+import Logindropdown from '../dropdown/logindropdown'
 class Shoppingcart extends Component {
     render() {
         return (
             <div>
                 <Header/>
-           
+           {/* <Logindropdown/> */}
             <div className="bg">
             <h1 className="heading">Shopping Cart</h1>
             <div className="container" style={{backgroundColor:"white"}}>
