@@ -152,4 +152,3 @@ render(){
 }
 }
 export default Products;
-
