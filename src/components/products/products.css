@@ -10,3 +10,7 @@
 .details{
     padding-left: 15%;
 }
+ .addbtn{
+    border-color: #e34f30;
+    color: red;
+} 

@@ -4,7 +4,7 @@
     padding-left: 2%;
 }
 .form-control{
-    width: 100%;
+    width: 85%;
     height: calc(3.25rem + 2px);
 }
 .submit{
