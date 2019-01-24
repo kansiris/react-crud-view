@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 // import './results.css';
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import Header from '../Results/Header';
 import Adminsidebar from '../Adminsidebar/Adminsidebar';
-import Productlist1 from './Productlist'
+import Productlist1 from './Productlist';
 
 
 class Productlist  extends React.Component
@@ -34,26 +36,49 @@ clearData(){
     myValue: ''
   })
 }
+selectImages = (event) => {
+  let images = []
+  for (var i = 0; i < event.target.files.length; i++) {
+  images[i] = event.target.files.item(i);
+  }
+  images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|gif)$/))
+  let message = `${images.length} valid image(s) selected`
+  this.setState({ images, message })
+  }
+  
 _handleImageChange(e) {
   e.preventDefault();
+  const formData = new FormData();
+  formData.append('myImage',this.state.file);
+  const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+  };
+  axios.post("../productimages",formData,config)
+      .then((response) => {
+          alert("The file is successfully uploaded");
+      }).catch((error) => {
+  });
+//   e.preventDefault();
 
-  let reader = new FileReader();
-  let files = e.target.files[0];
-reader.readAsDataURL(files[0]);
-reader.onload=(e) =>{console.warn("img data",e.target.result) }
-const url = ""
-const FormData = {file:e.target.result}
-return post(url,FormData).then(response =>console.warn("result",response))
+//   let reader = new FileReader();
+//   let files = e.target.files[0];
+// reader.readAsDataURL(files[0]);
+// reader.onload=(e) =>{console.warn("img data",e.target.result) }
+// const url = ""
+// const FormData = {file:e.target.result}
+// return post(url,FormData).then(response =>console.warn("result",response))
 
 
-  reader.onloadend = () => {
-    this.setState({
-      files: files,
-      imagePreviewUrl: reader.result
-    });
-  }
+//   reader.onloadend = () => {
+//     this.setState({
+//       files: files,
+//       imagePreviewUrl: reader.result
+//     });
+//   }
 
-  reader.readAsDataURL(files)
+//   reader.readAsDataURL(files)
 }
 
 _handleSubmit(e) {
@@ -161,7 +186,7 @@ if (imagePreviewUrl) {
             <div className="row"> <div className="col-sm-6">  <label>Discounts</label></div> <div className="col-sm-6"> <input type="tel" value={Discounts} name="Discounts" placeholder="Discounts" onChange={this.onChange}/>  </div>  </div>
             <div className="row"> <div className="col-sm-6">  <label>Image</label> </div> <div className="col-sm-6"> 
             <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input className="fileInput" type="file"  id="avatar_img" accept="image/x-png"
+          <input className="fileInput" type="file"  
             onChange={(e)=>this._handleImageChange(e)} />
           <button className="submitButton"  type="submit" 
             onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
