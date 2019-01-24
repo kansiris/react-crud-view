@@ -15,17 +15,39 @@ class Login extends Component {
   {
     super(props);
     this.state={
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:''
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
 
     }
     this.handleChange=this.handleChange.bind(this);
     this.Savedetails=this.Savedetails.bind(this);
+    this.logindetails=this.logindetails.bind(this);
   }
 
   handleChange(e) {
     const state=this.state
   state[e.target.id]=e.target.value;
   this.setState(state);
+}
+
+logindetails(e)
+{
+   const{email,password}=this.state
+   e.preventDefault();
+  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&& password ='+password,{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  }
+  }).then((response) => response.json())
+  .then((responseJson) => { 
+    localStorage.setItem('Firstname',responseJson.Firstname);
+localStorage.setItem('Email',responseJson.Email);
+    window.location.reload();
+     alert('success');
+    this.setState({password:'',password:''});
+    return responseJson.success;
+  });
 }
 Savedetails(e)
 {
@@ -44,8 +66,9 @@ Savedetails(e)
      window.location.reload();
            
           this.setState({Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:''});
+          alert('Registered Successfully');
           return responseJson.success;
-          alert('success');
+         
    })
    .catch((error) => {
      console.error(error);
@@ -68,16 +91,16 @@ Savedetails(e)
               <h2 className="txt">Sign In</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Email" id="Emailln" name="Emailln" className="form-control" />
+                  <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Password" id="Passwordln" name="Passwordln" className="form-control" />
+                  <input type="text" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
                   <button className="btntxt">
                     Forgot your password?
                   </button>
-                  <button className="text">LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+                  <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
                 </div>
               </div>
             </form>
@@ -102,7 +125,7 @@ Savedetails(e)
                   <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="checkbox" /> &nbsp; Recieve promotional emails
+                  {/* <input type="checkbox" /> &nbsp; Recieve promotional emails */}
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   <button className="submit" onClick={this.Savedetails}>
