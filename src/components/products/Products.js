@@ -9,6 +9,29 @@ import Ponni from '../../images/Ponni.jpg';
 import Rice from '../../images/Rice.jpg';
 
 class Products extends Component{
+
+    constructor(props)
+    {
+        super(props);
+        this.state={
+            productdetails:[],
+            id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
+            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:''
+
+        }
+    }
+    componentWillMount()
+    {
+       this.getproductdetails();
+    } 
+    getproductdetails()
+    {
+        fetch('http://localhost:64017/api/Product/GetAllProducts').then(res=>res.json()).then(details=>{
+         this.setState({
+            productdetails:details
+         });
+      })
+    }
 render(){
     return(
         <div>
@@ -30,119 +53,22 @@ render(){
             </div>
             <div className="col-sm-9 col-md-9">
                  <div className="row">
-                      <div className="col-sm-4 col-md-4 cimg">
+                 {
+              this.state.productdetails.map(item=>(<div className="col-sm-4 col-md-4 cimg" key={item.id}>
                           <a href='\'>
                            <img style={{ height: "130px" }} src={Basmati} />
                            </a>
                            <div className="details">
-                              <div><a href='\'>Basmati</a></div> 
-                               <div><span>$80.00</span></div>
+                              <div><a href='\'>{item.Productname}</a></div> 
+                               <div><span>₹{item.Price}</span></div>
                            </div>
                            <div>
                            <button className="btn btn-sm add" >Add To Cart</button>
                            </div>
                       </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={matta} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>Matta</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div><button className="btn btn-sm add" >Add To Cart</button></div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Ponni} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>Ponni</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
+                ))}
+                    
                  </div>
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Basmati} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Ponni} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Basmati} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
-                 </div>
-                 <div className="row">
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Rice} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Basmati} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                      </div>
-                      <div className="col-sm-4 col-md-4">
-                          <a href='\'>
-                           <img style={{ height: "130px" }} src={Rice} />
-                           </a>
-                           <div className="details">
-                              <div><a href='\'>fdgfdgg</a></div> 
-                               <div><span>$80.00</span></div>
-                           </div>
-                           <div>
-                           <button className="btn btn-sm add" >Add To Cart</button>
-                           </div>
-                         
-                      </div>
-                 </div>
-
             </div>
         </div>
        </div>
