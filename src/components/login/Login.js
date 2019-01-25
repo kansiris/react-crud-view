@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import './login.css';
 import Header from '../Results/Header';
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+
 
 
 class Login extends Component {
@@ -45,8 +45,8 @@ logindetails(e)
     localStorage.setItem('Firstname',responseJson.Firstname);
    localStorage.setItem('Email',responseJson.Email);
     window.location.reload();
-     alert('success');
-    this.setState({password:'',password:''});
+    alert('Login Successfully');
+    this.setState({email:'',password:''});
     return responseJson.success;
   });
 }
