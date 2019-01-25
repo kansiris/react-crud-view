@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import './co.css';
 import Header from '../Results/Header';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
-
+import { MDBContainer, MDBRow, MDBInput, MDBCol, MDBBtn } from 'mdbreact';
+import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
 
 class Cosignin extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            Email:'',Password:'', modal: false
+            Email:'',Password:'', modal14: false
         }
         this.handleChange=this.handleChange.bind(this);
         this.login=this.login.bind(this);
     }
-    toggle = () => {
+    toggle(nr) {
+        let modalNumber = 'modal' + nr
         this.setState({
-          modal: !this.state.modal
+          [modalNumber]: !this.state[modalNumber]
         });
       }
     handleChange(e) {
@@ -67,10 +68,11 @@ class Cosignin extends Component {
                                 <input type="password" placeholder="Password" id="Password" name="Password" className="form-control" onChange={this.handleChange} value={this.state.Password} />
                             </div>
                             <div className="col-sm-12  col-md-12 form-group">
-                                <button className="btntxt">
+                                <button className="btntxt" onClick={this.toggle(14)}>
                                     Forgot your password?
                                </button>
-                                <button className="text" onClick={this.login}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+      <button className="text" onClick={this.login}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+    
                             </div>
                         </div>
                     </form>
@@ -89,51 +91,11 @@ class Cosignin extends Component {
                     </div>
 
                 </div>
-            </div>
 
-   
-
-
-<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Modal Body</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
-
-
-<MDBContainer>
-      <MDBBtn onClick={this.toggle}>Modal</MDBBtn>
-      <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
-        <MDBModalHeader toggle={this.toggle}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          (...)
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-    </MDBContainer>
-
-
-            </div>
-           
-            </div>
-            </div>
+</div>
+</div>
+</div>
       
         );
     }
