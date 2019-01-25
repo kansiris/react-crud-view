@@ -33,6 +33,12 @@ class Products extends Component{
          });
       })
     }
+
+    AddtoCart(val){
+        var cartno = localStorage.getItem('cartno')
+var cartno1 = cartno + val;
+localStorage.setItem('cartno',cartno1)
+    }
 render(){
     return(
         <div>
@@ -64,7 +70,7 @@ render(){
                                <div><span>₹{item.Price}</span></div>
                            </div>
                            <div>
-                           <button className="btn btn-sm add" onClick={this.AddtoCart} >Add To Cart</button>
+                           <button className="btn btn-sm add" onClick={this.AddtoCart(item.id)} >Add To Cart</button>
                            </div>
                       </div>
                 ))}
