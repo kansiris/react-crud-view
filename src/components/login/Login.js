@@ -101,9 +101,9 @@ Savedetails(e)
                   <button className="btntxt">
                     Forgot your password?
                   </button>
+                  
                   <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
                 </div>
-
               </div>
             </form>
           </div>

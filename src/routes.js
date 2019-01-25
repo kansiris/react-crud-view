@@ -6,10 +6,10 @@ import Home from './components/Home/Home';
 import Notfound from './components/Notfound/Notfound';
 import Login from './components/login/Login';
 import checkout from './components/checkout/Checkout';
-
 import shopingcart from './components/shopingcart/Shoppingcart'
 import cosign from './components/cosign/Cosignin'
 import  Productlist from './components/products/Products'
+import Shipping from './components/Shipping/Shipping';
 // import  Productimages from './products'
 
 import products from './components/products/Products';
@@ -29,7 +29,7 @@ const Routes =()=>(
       <Route exact path="/shopingcart" component={shopingcart}/>
       <Route exact path="/cosign" component={cosign}/>
 
-
+      <Route exact path="/Shipping" component={Shipping}/>
       <Route exact path="/products" component={products}/>
 
       <Route exact path="*" component={Notfound}/>

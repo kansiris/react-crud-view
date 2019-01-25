@@ -43,7 +43,6 @@ class Cosignin extends Component {
                         <h2 className="txt">Register Account</h2>
                         <p>Register a new account to save your order history.</p>
                         <a href="\Login">
-
                         <button className="btntxt">
                             Register Now
                   </button>
