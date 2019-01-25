@@ -6,11 +6,16 @@ import Home from './components/Home/Home';
 import Notfound from './components/Notfound/Notfound';
 import Login from './components/login/Login';
 import checkout from './components/checkout/Checkout';
-import  vProduct from './components/Vproducts/vproducts'
+import  vProduct from './components/Vproducts/Vproducts'
 import shopingcart from './components/shopingcart/Shoppingcart'
 import cosign from './components/cosign/Cosignin'
-import  Productlist from './components/products/Products'
+// import  Productlist from './components/products/Products'
 // import  Productimages from './products'
+import Userdetails from './components/Userprofile/Userprofile';
+import UserOrderlist from './components/Userorders/Userorderlist';
+import VProduct from './components/Vproducts/Vproducts';
+import vorder from './components/Vorders/Vorder';
+import vcustomer from './components/Vcustomer/Vcustomer';
 
 import products from './components/products/Products';
 
@@ -20,11 +25,14 @@ const Routes =()=>(
       <Route exact path="/" component={Home}/>
       <Route exact path="/Results" component={Content}/>
       <Route exact path="/Login" component={Login}/>
-
+      <Route exact path="/Userdetails" component={Userdetails}/>
+      <Route exact path="/UserOrderlist" component={UserOrderlist}/>
+      <Route exact path="/vorder" component={vorder}/>
+      <Route exact path="/vcustomer" component={vcustomer}/>
       {/* <Route exact path="/VDb" component={VContent}/> */}
-      <Route exact path="/Productlist" component={Productlist}/>
+      {/* <Route exact path="/Productlist" component={Productlist}/> */}
       {/* <Route exact path="/Productimages" component={Productimages}/> */}
-      <Route exact path="/vProduct" component={vProduct}/>
+      <Route exact path="/VProduct" component={vProduct}/>
       <Route exact path="/checkout" component={checkout}/>
       <Route exact path="/shopingcart" component={shopingcart}/>
       <Route exact path="/cosign" component={cosign}/>

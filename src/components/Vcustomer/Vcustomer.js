@@ -36,12 +36,30 @@ render(){
             <div className="row">
   <div class="col-sm-2"><Adminsidebar/></div>
   <div class="col-sm-4"><div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />
-                </div></div>
-  
+                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  /> <button>submit</button>
+                </div>
+               
+                
+                <table className="table">
+    <thead>
+      <tr>
+        <th>CustomerName</th>
+        <th>Customerid</th>
+        <th>CustomerAddress</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+     
+    </tbody>
+  </table>
 </div>
 </div>
-
+</div>
 
 </div> 
 

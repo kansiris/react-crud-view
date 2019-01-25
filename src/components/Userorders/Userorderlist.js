@@ -1,31 +1,47 @@
-import React, { Component } from 'react';
-// import './results.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
+
+import React,{Component} from 'react';
 import Header from '../Results/Header';
-import Adminsidebar from '../Adminsidebar/Adminsidebar';
-class Orderlist  extends React.Component
-{
-constructor(){
-super();
-this.state={name:'',table:'',ProductID:'',Price:'',ProductName:'',ShortDescription:'',LongDescription:'',Quantity:'',Available:'',
-CategoryID:'',DishTypeID:'',Tax:'',Discounts:'',xImage:''};
-this.state.name = localStorage.getItem('UserName');
-}
-
-
-  render(){ 
-const {ProductID,Price,ProductName,ShortDescription,LongDescription,Available,Quantity,
-CategoryID,DishTypeID,Tax,Discounts,xImage} = this.state;
+// import './products.css';
+import logo from '../../images/logo.jpg';
+import Basmati from '../../images/Basmati.jpg';
+import matta from '../../images/matta.jpg';
+import Ponni from '../../images/Ponni.jpg';
+import Rice from '../../images/Rice.jpg';
+import Usersidebar from '../Usersidebar/Usersidebar';
+import Productlist1 from '../Vproducts/Vproductlist'
+class Userorderlist extends Component{
+    constructor(props)
+    {
+      super(props);
+      this.state={
+        Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
   
-    return(<div>
-        <table className="table">
+      }
+      this.handleChange=this.handleChange.bind(this);
+    //   this.Savedetails=this.Savedetails.bind(this);
+    //   this.logindetails=this.logindetails.bind(this);
+    }
+  
+    handleChange(e) {
+      const state=this.state
+    state[e.target.id]=e.target.value;
+    this.setState(state);
+  }
+render(){
+    return(
+        <div>
+         <Header/>
+         <div className="bg">
+         <div className="container" style={{backgroundColor:"white"}}>
+            <div className="row">
+  <div class="col-sm-2"><Usersidebar/></div>
+  <div class="col-sm-4">
+  <table className="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>OrderID</th>
+        <th>OrderDate</th>
+        <th>Orderstatus</th>
       </tr>
     </thead>
     <tbody>
@@ -47,7 +63,16 @@ CategoryID,DishTypeID,Tax,Discounts,xImage} = this.state;
     </tbody>
   </table>
 
-  </div>);}
-  }
+  </div>      
+</div>
+</div>
 
-  export default Orderlist;
+
+</div> 
+
+              
+        </div> 
+    );
+}
+}
+export default Userorderlist;

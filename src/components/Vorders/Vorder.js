@@ -37,7 +37,7 @@ render(){
   <div class="col-sm-2"><Adminsidebar/></div>
   <div class="col-sm-4"><Orderlist/></div>
   <div class="col-sm-4"> <form>
-              <h2 className="txt">Product Details</h2>
+              <h2 className="txt">Order Details</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
                   <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />

@@ -23,9 +23,9 @@ CategoryID,DishTypeID,Tax,Discounts,xImage} = this.state;
         <table className="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>OrderID</th>
+        <th>CustomerName</th>
+        <th>Orderdate</th>
       </tr>
     </thead>
     <tbody>

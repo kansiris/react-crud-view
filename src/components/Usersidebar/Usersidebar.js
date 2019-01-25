@@ -21,26 +21,14 @@ class Adminsidebar extends Component {
           <div className="col-sm-2">
             <label>
            
-            <a href="/productlist" style={{ float: "right", paddingTop: "4px" }}>Products</a>  
+            <a href="/Userdetails" style={{ float: "right", paddingTop: "4px" }}>Profile</a>  
             </label>
             </div>
          
             <div className="col-sm-2">
             <label>
            
-            <a href="/productlist" style={{ float: "right", paddingTop: "4px" }}>Orders</a>  
-            </label>
-            </div>
-            <div className="col-sm-2">
-            <label>
-           
-            <a href="/productlist" style={{ float: "right", paddingTop: "4px" }}>CustomerDetails</a>  
-            </label>
-            </div>
-            <div className="col-sm-2">
-            <label>
-           
-            <a href="/productlist" style={{ float: "right", paddingTop: "4px" }}>OrderStatus</a>  
+            <a href="/UserOrderlist" style={{ float: "right", paddingTop: "4px" }}>Orders</a>  
             </label>
             </div>
   

@@ -7,9 +7,9 @@ import Basmati from '../../images/Basmati.jpg';
 import matta from '../../images/matta.jpg';
 import Ponni from '../../images/Ponni.jpg';
 import Rice from '../../images/Rice.jpg';
-import Adminsidebar from '../Adminsidebar/Adminsidebar';
+import Usersidebar from '../Usersidebar/Usersidebar';
 import Productlist1 from '../Vproducts/Vproductlist'
-class Products extends Component{
+class Userdetails extends Component{
     constructor(props)
     {
       super(props);
@@ -34,9 +34,9 @@ render(){
          <div className="bg">
          <div className="container" style={{backgroundColor:"white"}}>
             <div className="row">
-  <div class="col-sm-2"><Adminsidebar/></div>
+  <div class="col-sm-2"><Usersidebar/></div>
   <div class="col-sm-4"> <form>
-              <h2 className="txt">Product Details</h2>
+              <h2 className="txt">User Details</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
                   <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />
@@ -75,4 +75,4 @@ render(){
     );
 }
 }
-export default Products;
+export default Userdetails;
