@@ -1,8 +1,8 @@
 
 // import FaceBookLogin from 'react-facebook-login';
 // import GoogleLogin from 'react-google-login';
-import {PostData} from './postdata';
-import {Redirect} from 'react-router-dom';
+// import {PostData} from './postdata';
+// import {Redirect} from 'react-router-dom';
 
 import React, { Component } from 'react';
 import './login.css';

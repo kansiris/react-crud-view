@@ -6,7 +6,7 @@ import Home from './components/Home/Home';
 import Notfound from './components/Notfound/Notfound';
 import Login from './components/login/Login';
 import checkout from './components/checkout/Checkout';
-
+import  vProduct from './components/Vproducts/vproducts'
 import shopingcart from './components/shopingcart/Shoppingcart'
 import cosign from './components/cosign/Cosignin'
 import  Productlist from './components/products/Products'
@@ -24,7 +24,7 @@ const Routes =()=>(
       {/* <Route exact path="/VDb" component={VContent}/> */}
       <Route exact path="/Productlist" component={Productlist}/>
       {/* <Route exact path="/Productimages" component={Productimages}/> */}
-
+      <Route exact path="/vProduct" component={vProduct}/>
       <Route exact path="/checkout" component={checkout}/>
       <Route exact path="/shopingcart" component={shopingcart}/>
       <Route exact path="/cosign" component={cosign}/>
