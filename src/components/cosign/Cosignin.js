@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import './co.css';
 import Header from '../Results/Header';
-import { MDBContainer, MDBRow, MDBInput, MDBCol, MDBBtn } from 'mdbreact';
-import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
+// import { MDBContainer, MDBRow, MDBInput, MDBCol, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 class Cosignin extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            Email:'',Password:'', modal14: false
+            Email:'',Password:'',modal: false
         }
         this.handleChange=this.handleChange.bind(this);
         this.login=this.login.bind(this);
     }
-    toggle(nr) {
-        let modalNumber = 'modal' + nr
+    toggle = () => {
         this.setState({
-          [modalNumber]: !this.state[modalNumber]
+          modal: !this.state.modal
         });
       }
     handleChange(e) {
@@ -68,10 +67,21 @@ class Cosignin extends Component {
                                 <input type="password" placeholder="Password" id="Password" name="Password" className="form-control" onChange={this.handleChange} value={this.state.Password} />
                             </div>
                             <div className="col-sm-12  col-md-12 form-group">
-                                <button className="btntxt" onClick={this.toggle(14)}>
-                                    Forgot your password?
-                               </button>
-      <button className="text" onClick={this.login}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+                            <MDBContainer>
+      <MDBBtn onClick={this.toggle} size="sm" color="#0c4d6c" className="btntxt">Forgot your Password?</MDBBtn>
+      <MDBModal isOpen={this.state.modal} toggle={this.toggle} centered>
+        <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
+        <MDBModalBody>
+        <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+          <MDBBtn color="primary">Send</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+      <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+    </MDBContainer>
+
     
                             </div>
                         </div>

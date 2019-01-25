@@ -8,7 +8,7 @@ import matta from '../../images/matta.jpg';
 import Ponni from '../../images/Ponni.jpg';
 import axios from 'axios';
 import Adminsidebar from '../Adminsidebar/Adminsidebar';
-import Productlist1 from '../Vproducts/Vproductlist'
+import Productlist1 from './Vproductlist'
 class VProducts extends Component{
     constructor(props)
     {

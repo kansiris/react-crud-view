@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import './login.css';
 import Header from '../Results/Header';
-
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 
 class Login extends Component {
@@ -15,7 +15,7 @@ class Login extends Component {
   constructor(props)
   {
     super(props);
-    this.state={
+    this.state={ modal: false,
       Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
 
     }
@@ -23,7 +23,11 @@ class Login extends Component {
     this.Savedetails=this.Savedetails.bind(this);
     this.logindetails=this.logindetails.bind(this);
   }
-
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   handleChange(e) {
     const state=this.state
   state[e.target.id]=e.target.value;
@@ -98,11 +102,26 @@ Savedetails(e)
                   <input type="password" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
-                  <button className="btntxt">
+                  {/* <button className="btntxt">
+
                     Forgot your password?
-                  </button>
-                  
-                  <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+                  </button> */}
+                   <MDBContainer>
+      <MDBBtn onClick={this.toggle} size="sm" color="#0c4d6c" className="btntxt">Forgot your Password?</MDBBtn>
+      <MDBModal isOpen={this.state.modal} toggle={this.toggle}  centered>
+        <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
+        <MDBModalBody>
+        <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+          <MDBBtn color="primary">Send</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+      <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+    </MDBContainer>
+
+                 
                 </div>
               </div>
             </form>
