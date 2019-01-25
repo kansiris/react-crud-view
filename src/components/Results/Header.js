@@ -13,41 +13,42 @@ class Header extends React.Component {
   this.state = {
     name:''
   };
-  //  this.state.name = localStorage.getItem('UserName');
+    this.state.name = localStorage.getItem('Firstname');
    
  }
 
- 
-//  renderButton1() {
- 
-//     if(this.state.name !== ''&& this.state.name !== null) {
-//     return (
-//       <div>
-     
-//               <NavItem>
-//                 <Dropdown>
-//                   <DropdownToggle nav caret>
-//                     <div className="d-none d-md-inline"> <strong className="black-text">{this.state.name}</strong></div>
-//                   </DropdownToggle>
-//                   <DropdownMenu className="dropdown-default" right>
-//                     <DropdownItem href="#!" > <strong className="black-text">Profile</strong></DropdownItem>
-//                     <DropdownItem href="#!"onClick={this.logout}> <strong className="black-text">LogOut</strong></DropdownItem>
-//                  </DropdownMenu>
-//                 </Dropdown>
-//               </NavItem>
-//                    </div>
-//     );
-//   } else{
-  //   return (
-  //     <div>
-        
-    
-  //             <NavLink to="/Login"> <strong className="black-text">Login<i className="fa fa-lock" aria-hidden="true"></i></strong></NavLink>
-              
-  //     </div>
-  //   )
+ logout = ()=>{
+  localStorage.removeItem('Firstname');
+  localStorage.removeItem('Email');
+  window.location.reload();
+ }
 
-  // }}
+ 
+  renderButton1() {
+ 
+    if(this.state.name !== ''&& this.state.name !== null) {
+    return (
+      <div>
+     
+      <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }}  onClick={this.handleSelectChange} required>
+                        <option value="select">{this.state.name}</option>
+                        <option value="Wedding"> <a href="/Userdetails"><strong className="black-text">Profile</strong></a></option>
+                        <option value="Engagement"> <a href="#" onClick={this.logout}><strong className="black-text">Logout</strong></a></option>
+                        
+                      </select>
+    
+                   </div>
+    );
+  } else{
+    return (
+      <div>
+    
+    <a href="/Login"><strong className="black-text">Login <i className="fa fa-lock" aria-hidden="true"></i></strong></a>
+              
+      </div>
+    )
+
+  }}
  
 
 
@@ -89,7 +90,7 @@ render(){
       </li>
     </ul>
     <form className="form-inline my-2 my-lg-0">
-    <a href="/Login"><strong className="black-text">Login <i className="fa fa-lock" aria-hidden="true"></i></strong></a>
+{this.renderButton1()}
     <a href="/Shopingcart" style={{color:'black'}}> <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
