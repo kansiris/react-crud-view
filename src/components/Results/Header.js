@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './results.css';
-import "font-awesome/css/font-awesome.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import logo from '../../images/logo.jpg';
@@ -17,12 +17,6 @@ class Header extends React.Component {
    
  }
 
-
-//  logout = ()=>{
-//   localStorage.removeItem('UserName');
-//   localStorage.removeItem('UserID');
-//   window.location.reload();
-//  }
  
 //  renderButton1() {
  
@@ -61,7 +55,6 @@ render(){
 
   
   return(
-
 
 
 <div>

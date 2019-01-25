@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './results.css';
-import "font-awesome/css/font-awesome.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import {  MDBCol,  MDBRow,  Card, CardBody, CardImage,  CardText, Col } from 'mdbreact';

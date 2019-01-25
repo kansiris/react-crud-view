@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './Home.css';
 import convention1 from '../../images/convention1.jpg';
 import {Card,  CardImage} from 'mdbreact';
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
-import "font-awesome/css/font-awesome.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+
 import { MDBContainer, MDBRow, MDBCol, Button, Modal, ModalBody,  ModalFooter  } from 'mdbreact';
 import Routes from '../../routes';
 import Header from '../Results/Header';
