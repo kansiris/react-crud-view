@@ -14,7 +14,7 @@ class Login extends Component {
     super(props);
     this.state = {
       modal: false,
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:''
 
     }
     this.handleChange=this.handleChange.bind(this);
