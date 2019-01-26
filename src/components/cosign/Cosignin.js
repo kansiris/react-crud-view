@@ -9,10 +9,11 @@ class Cosignin extends Component {
     constructor(props){
         super(props);
         this.state={
-            Email:'',Password:'',modal: false
+            Email:'',Password:'',modal: false,sentemail:''
         }
         this.handleChange=this.handleChange.bind(this);
         this.login=this.login.bind(this);
+        this.sendmail=this.sendmail.bind(this);
     }
     toggle = () => {
         this.setState({
@@ -24,6 +25,24 @@ class Cosignin extends Component {
       state[e.target.id]=e.target.value;
       this.setState(state);
     }
+    sendmail(e){
+        e.preventDefault();
+        const{sentemail}=this.state;
+        alert(sentemail)
+        fetch('http://localhost:64017/api/Customer/SendPasswordmail?email='+ sentemail,{
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        }).then((response) => response.json()).then((responseJson) => {
+        //   window.location.reload();
+        this.toggle();
+          this.setState({sentemail:''});
+          return responseJson.success;
+        })
+      
+      }
     login(e)
     {
         const{Email,Password}=this.state
@@ -72,11 +91,11 @@ class Cosignin extends Component {
       <MDBModal isOpen={this.state.modal} toggle={this.toggle} centered>
         <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
         <MDBModalBody>
-        <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
+        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="form-control" onChange={this.handleChange} value={this.state.sentemail} />
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
-          <MDBBtn color="primary">Send</MDBBtn>
+          <MDBBtn color="primary" onClick={this.sendmail}>Send</MDBBtn>
         </MDBModalFooter>
       </MDBModal>
       <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
