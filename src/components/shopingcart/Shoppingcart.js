@@ -43,10 +43,10 @@ class Shoppingcart extends Component {
             <div>
                 <Header/>
             <div className="bg">
-            <h1 className="heading">Shopping Cart</h1>
+                <h1 className="heading">Shopping Cart</h1>
             <div className="container" style={{backgroundColor:"white"}}>
             <div className="row shopping">
-                <div className="col-sm-8 col-md-8">
+                <div className="col-sm-9 col-md-9">
                     <table className="table">
                         <thead>
                             <tr>
@@ -109,7 +109,7 @@ class Shoppingcart extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4 col-md-4">
+                <div className="col-sm-3 col-md-3">
                     <h3 className="txt">Order Summary  </h3>
                     <p className="h6 info">SHIPPING COSTS AND TAXES WILL BE EVALUATED DURING CHECKOUT</p>
                     <ul className="list-group">
