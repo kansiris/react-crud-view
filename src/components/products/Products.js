@@ -19,7 +19,8 @@ class Products extends Component{
             brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]
 
         }
-        this.getproductdetails=this.getproductdetails.bind(this);
+        // this.getproductdetails=this.getproductdetails.bind(this);
+        this.AddtoCart=this.AddtoCart.bind(this);
         
     }
     componentDidMount()
@@ -35,11 +36,14 @@ class Products extends Component{
       })
     }
 
+
     AddtoCart(val){
     //   alert('hg');
+    // alert(val);
         var cartno = localStorage.getItem('cartno');
          var cartno1 = cartno +','+ val;
        localStorage.setItem('cartno',cartno1);
+       alert(localStorage.getItem('cartno'));
     }
     
 render(){
@@ -73,7 +77,7 @@ render(){
                                <div><span>₹{item.Price}</span></div>
                            </div>
                            <div>
-                           <button className="btn btn-sm add" onClick={this.AddtoCart(item.id)} >Add To Cart</button>
+                           <button className="btn btn-sm add" onClick={(e)=>this.AddtoCart(item.id)} >Add To Cart</button>
                            </div>
                       </div>
                 ))}

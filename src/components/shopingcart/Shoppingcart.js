@@ -6,22 +6,35 @@ import Logindropdown from '../dropdown/logindropdown'
 class Shoppingcart extends Component {
     constructor(props){
         super(props);
-        this.state={counter: 0,price1:80,result:''};
+        this.state={counter: 0,price1:80,result:'',productdetails:[],
+        id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
+        brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]};
+        this.state.id=localStorage.getItem('cartno')
          this.increment=this.increment.bind(this);
         this.decrement=this.decrement.bind(this);
     }
-    // Total(){
-    //     multiply=this.state.counter * price
-    //     this.setState({
-    //      result:multiply
-    //     });
-    // }
+
+    componentWillMount()
+    {
+        this.getitems();
+    }
+
+    getitems()
+    {
+    //   const{id}=this.state
+      fetch('http://localhost:64017/api/Product/GetProductlistbyid?id='+this.state.id).then(res=>res.json()).then(details=>{
+        this.setState({
+           productdetails:details
+        });
+     })
+    }
+   
     increment() {
         this.setState({
           counter: this.state.counter + 1
 
         });
-       const cal=this.state.counter * this.state.price1
+       const cal=this.state.counter * this.state.Price
             this.setState({
              result:cal
              });
@@ -32,7 +45,7 @@ class Shoppingcart extends Component {
             this.setState({
                 counter: this.state.counter - 1
               });
-              const cal=this.state.counter * this.state.price1
+              const cal=this.state.counter * this.state.Price
             this.setState({
              result:cal
              });
@@ -58,7 +71,8 @@ class Shoppingcart extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                        {
+              this.state.productdetails.map((item,index)=>(<tr key={index}>
                                 <td>
                                     <div className="col-sm-12 col-md-12">
                                         <div className="img">
@@ -70,7 +84,7 @@ class Shoppingcart extends Component {
                                     <div className="col-sm-12 col-md-12">
                                         <div className="h6">
                                             <a href="/">PURPLE FITNESS TRACKER</a>
-                                            <p><small>$89.00</small></p>
+                                            <p><small>₹{item.Price}</small></p>
                                         </div>
                                         <p>Bulk Pricing</p>
                                     </div>
@@ -91,6 +105,7 @@ class Shoppingcart extends Component {
                                </td>
                                 <td><i className="fa fa-times fa-2x" aria-hidden="true"></i></td>
                             </tr>
+              ))}
                         </tbody>
                     </table>
                     <div className="row">
