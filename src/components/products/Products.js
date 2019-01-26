@@ -16,12 +16,13 @@ class Products extends Component{
         this.state={
             productdetails:[],
             id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
-            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:''
+            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]
 
         }
+        this.getproductdetails=this.getproductdetails.bind(this);
         
     }
-    componentWillMount()
+    componentDidMount()
     {
        this.getproductdetails();
     } 
@@ -35,10 +36,12 @@ class Products extends Component{
     }
 
     AddtoCart(val){
-        var cartno = localStorage.getItem('cartno')
-var cartno1 = cartno + val;
-localStorage.setItem('cartno',cartno1)
+    //   alert('hg');
+        var cartno = localStorage.getItem('cartno');
+         var cartno1 = cartno +','+ val;
+       localStorage.setItem('cartno',cartno1);
     }
+    
 render(){
     return(
         <div>
@@ -61,7 +64,7 @@ render(){
             <div className="col-sm-9 col-md-9">
                  <div className="row">
                  {
-              this.state.productdetails.map(item=>(<div className="col-sm-4 col-md-4 cimg" key={item.id}>
+              this.state.productdetails.map((item,index)=>(<div className="col-sm-4 col-md-4 cimg" key={index}>
                           <a href='\'>
                            <img style={{ height: "130px" }} src={Basmati} />
                            </a>
