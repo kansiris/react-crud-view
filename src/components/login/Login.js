@@ -6,17 +6,15 @@
 
 import React, { Component } from 'react';
 import './login.css';
-import Header from '../Results/Header';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
-
+import Header from '../Results/Header';import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 class Login extends Component {
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
-    this.state={ modal: false,
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:''
+    this.state = {
+      modal: false,
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
 
     }
     this.handleChange=this.handleChange.bind(this);
