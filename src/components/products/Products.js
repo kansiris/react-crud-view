@@ -34,6 +34,7 @@ class Products extends Component{
     }
 
     AddtoCart(val){
+        alert(val);
         var cartno = localStorage.getItem('cartno')
 var cartno1 = cartno + val;
 localStorage.setItem('cartno',cartno1)
