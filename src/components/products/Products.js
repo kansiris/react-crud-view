@@ -41,6 +41,7 @@ class Products extends Component{
     //   alert('hg');
     // alert(val);
         var cartno = localStorage.getItem('cartno');
+        localStorage.removeItem('cartno')
          var cartno1 = cartno +','+ val;
        localStorage.setItem('cartno',cartno1);
        alert(localStorage.getItem('cartno'));
