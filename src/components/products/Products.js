@@ -16,11 +16,14 @@ class Products extends Component{
         this.state={
             productdetails:[],
             id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
-            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:''
+            brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]
 
         }
+        // this.getproductdetails=this.getproductdetails.bind(this);
+        this.AddtoCart=this.AddtoCart.bind(this);
+        
     }
-    componentWillMount()
+    componentDidMount()
     {
        this.getproductdetails();
     } 
@@ -33,12 +36,16 @@ class Products extends Component{
       })
     }
 
+
     AddtoCart(val){
-        alert(val);
-        var cartno = localStorage.getItem('cartno')
-var cartno1 = cartno + val;
-localStorage.setItem('cartno',cartno1)
+
+    // alert(val);
+        var cartno = localStorage.getItem('cartno');
+         var cartno1 = cartno +','+ val;
+       localStorage.setItem('cartno',cartno1);
+       alert(localStorage.getItem('cartno'));
     }
+    
 render(){
     return(
         <div>
@@ -61,7 +68,7 @@ render(){
             <div className="col-sm-9 col-md-9">
                  <div className="row">
                  {
-              this.state.productdetails.map(item=>(<div className="col-sm-4 col-md-4 cimg" key={item.id}>
+              this.state.productdetails.map((item,index)=>(<div className="col-sm-4 col-md-4 cimg" key={index}>
                           <a href='\'>
                            <img style={{ height: "130px" }} src={Basmati} />
                            </a>
@@ -70,7 +77,7 @@ render(){
                                <div><span>₹{item.Price}</span></div>
                            </div>
                            <div>
-                           <button className="btn btn-sm add" onClick={this.AddtoCart(item.id)} >Add To Cart</button>
+                           <button className="btn btn-sm add" onClick={(e)=>this.AddtoCart(item.id)} >Add To Cart</button>
                            </div>
                       </div>
                 ))}

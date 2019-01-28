@@ -1,18 +1,65 @@
 import React, { Component } from 'react';
 import './shoppingcart.css';
 import Header from '../Results/Header'
+import Basmati from '../../images/Basmati.jpg';
 import Logindropdown from '../dropdown/logindropdown'
 class Shoppingcart extends Component {
+    constructor(props){
+        super(props);
+        this.state={counter: 0,price1:80,result:'',productdetails:[],
+        id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
+        brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]};
+        this.state.id=localStorage.getItem('cartno')
+         this.increment=this.increment.bind(this);
+        this.decrement=this.decrement.bind(this);
+    }
+
+    componentWillMount()
+    {
+        this.getitems();
+    }
+
+    getitems()
+    {
+    //   const{id}=this.state
+      fetch('http://localhost:64017/api/Product/GetProductlistbyid?id='+this.state.id).then(res=>res.json()).then(details=>{
+        this.setState({
+           productdetails:details
+        });
+     })
+    }
+   
+    increment() {
+        this.setState({
+          counter: this.state.counter + 1
+
+        });
+       const cal=this.state.counter * this.state.Price
+            this.setState({
+             result:cal
+             });
+
+      }
+      decrement(){
+          if(this.state.counter > 0){
+            this.setState({
+                counter: this.state.counter - 1
+              });
+              const cal=this.state.counter * this.state.Price
+            this.setState({
+             result:cal
+             });
+          }  
+      }
     render() {
         return (
             <div>
                 <Header/>
-           {/* <Logindropdown/> */}
             <div className="bg">
-            <h1 className="heading">Shopping Cart</h1>
+                <h1 className="heading">Shopping Cart</h1>
             <div className="container" style={{backgroundColor:"white"}}>
-            <div className="row">
-                <div className="col-sm-8 col-md-8">
+            <div className="row shopping">
+                <div className="col-sm-9 col-md-9">
                     <table className="table">
                         <thead>
                             <tr>
@@ -24,19 +71,20 @@ class Shoppingcart extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                        {
+              this.state.productdetails.map((item,index)=>(<tr key={index}>
                                 <td>
                                     <div className="col-sm-12 col-md-12">
                                         <div className="img">
-
+                                        <img style={{ height: "130px" }} src={Basmati} />
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div className="col-sm-12 col-md-12">
                                         <div className="h6">
-                                            <a href="#">PURPLE FITNESS TRACKER</a>
-                                            <p><small>$89.00</small></p>
+                                            <a href="/">PURPLE FITNESS TRACKER</a>
+                                            <p><small>₹{item.Price}</small></p>
                                         </div>
                                         <p>Bulk Pricing</p>
                                     </div>
@@ -45,20 +93,19 @@ class Shoppingcart extends Component {
                                     <div className="col-sm-12 col-md-12">
                                         <div className="num">
                                             <div className="selectnumber">
-                                                <button>
-                                                    <i className="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input type="text" id="" name="" placeholder="" className="form-control1" />
-                                                <button>
-                                                    <i className="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
+                                                <button onClick={this.decrement} className="fa fa-minus dec"></button>
+                                                <input type="text" className="number" value={this.state.counter}/>
+                                                <button onClick={this.increment} className="fa fa-plus dec"></button>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>$50.00 </td>
+                                <td>
+                                   {this.state.result}
+                               </td>
                                 <td><i className="fa fa-times fa-2x" aria-hidden="true"></i></td>
                             </tr>
+              ))}
                         </tbody>
                     </table>
                     <div className="row">
@@ -77,22 +124,23 @@ class Shoppingcart extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4 col-md-4">
+                <div className="col-sm-3 col-md-3">
                     <h3 className="txt">Order Summary  </h3>
-                    <p className="h6">SHIPPING COSTS AND TAXES WILL BE EVALUATED DURING CHECKOUT</p>
+                    <p className="h6 info">SHIPPING COSTS AND TAXES WILL BE EVALUATED DURING CHECKOUT</p>
                     <ul className="list-group">
                         <li className="list-group-item"> Subtotal:
+                        <span className="rupee" style={{float:"right"}}> ₹79.00</span>
                          </li>
-                        <li className="list-group-item">Total:</li>
+                        <li className="list-group-item">Total:
+                           <span className="rupee" style={{float:"right"}}> ₹79.00</span>
+                        </li>
                     </ul>
                     <button className="c">Checkout</button>
                 </div>
             </div>
             </div>
-            <h1>dasdfsf</h1>
-            </div>
-          
-            </div>
+            </div>   
+</div>
         );
 
     }

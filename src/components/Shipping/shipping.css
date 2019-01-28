@@ -1,0 +1,19 @@
+.pbtn{
+    border: 2px solid #0c4d6c;
+    color:#0c4d6c;
+}
+.pbtn:hover{
+    color:white;
+    background-color: #0c4d6c;
+}
+.checkbtn{
+    background-color: #cccccc;
+    color:white;
+}
+.rbtn{
+    background-color: #0c4d6c;
+    color:white;
+}
+.checkpage{
+    padding-top: 4%;
+}

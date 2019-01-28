@@ -39,7 +39,18 @@ class Header extends React.Component {
                       </select>
      */}
     
-    <div className="dropdown" onClick={this.toggleOpen}>
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  {this.state.name}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/Userdetails">Profile</a>
+    <a class="dropdown-item" href="#" onClick={this.logout}>Logout</a>
+  </div>
+</div>
+
+    
+    {/* <div className="dropdown" onClick={this.toggleOpen}>
         <button
           className="btn btn-secondary dropdown-toggle"
           type="button"
@@ -57,9 +68,9 @@ class Header extends React.Component {
           Logout          </a>
           {/* <a className="dropdown-item" href="#nogo">
             Item 3
-          </a> */}
+          </a> 
         </div>
-      </div>
+      </div> */}
                    </div>
     );
   } else{
@@ -102,11 +113,12 @@ render(){
                         <option value="other">other</option>
                         {this.state.result}
                       </select> */}
-                       <div className="nav">
-      <Link />
-      </div>
+                      
       <li className="nav-item">
-        <a className="nav-link" href="#">ABOUT <span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="/products">Shop <span className="sr-only">(current)</span></a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">About</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">BLOG</a>
@@ -119,8 +131,8 @@ render(){
     <form className="form-inline my-2 my-lg-0">
 {this.renderButton1()}
     <a href="/Shopingcart" style={{color:'black'}}> <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      {/* <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
     </form>
   </div>
 </nav>
@@ -128,29 +140,7 @@ render(){
 );}
 }
  
-class Link extends React.Component {
-	state = {
-  	open: false
-  }
-  handleClick = () => {
-  	this.setState({ open: !this.state.open });
-  }
-  render () {
-  	const { open } = this.state;
-  	return (
-    	<div className="link">
-    	  <span onClick={this.handleClick}>Click Me</span>
-        <div className={`menu ${open ? 'open' : ''}`}>
-          <ul>
-            <li>Test 1</li>
-            <li>Test 2</li>
-            <li>Test 3</li>
-          </ul>
-        </div>
-    	</div>
-    )
-  }
-}
+
 
 
 

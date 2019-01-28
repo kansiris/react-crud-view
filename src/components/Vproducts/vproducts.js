@@ -8,7 +8,8 @@ import matta from '../../images/matta.jpg';
 import Ponni from '../../images/Ponni.jpg';
 import axios from 'axios';
 import Adminsidebar from '../Adminsidebar/Adminsidebar';
-import Productlist1 from '../Vproducts/Vproductlist'
+import Productlist1 from './Vproductlist'
+import './vproducts.css';
 class VProducts extends Component{
     constructor(props)
     {
@@ -120,10 +121,10 @@ render(){
          <Header/>
          <div className="bg">
          <div className="container" style={{backgroundColor:"white"}}>
-            <div className="row">
-  <div class="col-sm-2"><Adminsidebar/></div>
-  <div class="col-sm-4"><Productlist1/></div>
-  <div class="col-sm-4"> <form>
+            <div className="row vproducts">
+  <div className="col-sm-2"><Adminsidebar/></div>
+  <div className="col-sm-4"><Productlist1/></div>
+  <div className="col-sm-4"> <form>
               <h2 className="txt">Product Details</h2>
               <button onClick={this.handleEdit3}>
             Add new product

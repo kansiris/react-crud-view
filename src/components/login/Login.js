@@ -6,34 +6,57 @@
 
 import React, { Component } from 'react';
 import './login.css';
-import Header from '../Results/Header';
-
-
+import Header from '../Results/Header';import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 class Login extends Component {
 
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
-    this.state={
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:''
+    this.state = {
+      modal: false,
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:''
 
     }
     this.handleChange=this.handleChange.bind(this);
     this.Savedetails=this.Savedetails.bind(this);
     this.logindetails=this.logindetails.bind(this);
+    this.sendmail=this.sendmail.bind(this);
   }
-
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   handleChange(e) {
     const state=this.state
   state[e.target.id]=e.target.value;
   this.setState(state);
+}
+sendmail(e){
+  e.preventDefault();
+  const{sentemail}=this.state;
+  alert(sentemail)
+  fetch('http://localhost:64017/api/Customer/SendPasswordmail?email='+ sentemail,{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  }
+  }).then((response) => response.json()).then((responseJson) => {
+    // window.location.reload();
+    this.toggle();
+    this.setState({sentemail:''});
+    return responseJson.success;
+  })
+
 }
 
 logindetails(e)
 {
    const{email,password}=this.state
    e.preventDefault();
+   if(email!='' && password!='')
+   {
   fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&& password ='+password,{
     method: 'POST',
     headers: {
@@ -48,7 +71,14 @@ logindetails(e)
     alert('Login Successfully');
     this.setState({email:'',password:''});
     return responseJson.success;
+  }) .catch((error) => {
+    console.error(error);
+    alert('failed');
   });
+}else{
+  alert("Please Login with valid Email and Password");
+}
+
 }
 Savedetails(e)
 {
@@ -98,12 +128,27 @@ Savedetails(e)
                   <input type="password" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
-                  <button className="btntxt">
-                    Forgot your password?
-                  </button>
-                  <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
-                </div>
+                  {/* <button className="btntxt">
 
+                    Forgot your password?
+                  </button> */}
+                   <MDBContainer>
+      <MDBBtn onClick={this.toggle} size="sm" color="#0c4d6c" className="btntxt" >Forgot your Password?</MDBBtn>
+      <MDBModal isOpen={this.state.modal} toggle={this.toggle}  centered>
+        <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
+        <MDBModalBody>
+        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="form-control" onChange={this.handleChange} value={this.state.sentemail} />
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+          <MDBBtn color="primary" onClick={this.sendmail}>Send</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+      <button className="text" onClick={this.logindetails}>LOG IN <i className="fa fa-lock" aria-hidden="true"></i></button>
+    </MDBContainer>
+
+                 
+                </div>
               </div>
             </form>
           </div>
