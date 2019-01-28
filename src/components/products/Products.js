@@ -38,7 +38,7 @@ class Products extends Component{
 
 
     AddtoCart(val){
-    //   alert('hg');
+
     // alert(val);
         var cartno = localStorage.getItem('cartno');
         localStorage.removeItem('cartno')
