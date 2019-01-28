@@ -14,6 +14,7 @@ class Shoppingcart extends Component {
         this.decrement=this.decrement.bind(this);
         this.remove=this.remove.bind(this);
         this.handleChange=this.handleChange.bind(this);
+        this.checkout=this.checkout.bind(this);
     }
     handleChange(e) {
         const state=this.state
@@ -46,10 +47,10 @@ class Shoppingcart extends Component {
           counter: this.state.counter + 1
 
         });
-    //    const cal=this.state.counter * this.state.Price
-    //         this.setState({
-    //          result:cal
-    //          });
+       const cal=this.state.counter * this.state.Price
+            this.setState({
+             result:cal
+             });
 
       }
       decrement(){
@@ -57,10 +58,10 @@ class Shoppingcart extends Component {
             this.setState({
                 counter: this.state.counter - 1
               });
-            //   const cal=this.state.counter * this.state.Price
-            // this.setState({
-            //  result:cal
-            //  });
+              const cal=this.state.counter * this.state.Price
+            this.setState({
+             result:cal
+             });
           }  
       }
     remove(val)
@@ -91,6 +92,16 @@ class Shoppingcart extends Component {
       localStorage.removeItem('cartno');
       localStorage.setItem('cartno',w.replace('null',''));
       window.location.reload();
+    }
+
+    checkout()
+    {
+        if(localStorage.getItem('Firstname')!=null && localStorage.getItem('Email') !=null)
+        {
+           this.props.history.push("/checkout")
+           
+        }
+        else{ this.props.history.push("/cosign")}
     }
 
 
@@ -137,16 +148,18 @@ class Shoppingcart extends Component {
                                         <div className="num">
                                             <div className="selectnumber">
                                                 <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
-                                                <input type="text" id='counter' className="number" value={this.state.counter} onChange={this.handleChange}/>&nbsp;
+                                                <input type="text" id={item.id} className="number" value={this.state.counter} onChange={this.handleChange}/>&nbsp;
                                                 <button onClick={this.increment} className="fa fa-plus dec"></button>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
+                                    {/* {this.state.result} */}
                                    {this.state.counter * item.Price}
                                </td>
-                                <td><button onClick={(e)=>this.remove(item.id)} ><i className="fa fa-times fa-2x" aria-hidden="true" ></i></button></td>
+                                {/* <td><button onClick={(e)=>this.remove(item.id)} ><i className="fa fa-times fa-1x" aria-hidden="true" ></i></button></td> */}
+                                <td><i className="fa fa-times fa-1x" aria-hidden="true" onClick={(e)=>this.remove(item.id)} ></i></td>
                             </tr>
               ))}
                         </tbody>
@@ -178,7 +191,9 @@ class Shoppingcart extends Component {
                            <span className="rupee" style={{float:"right"}}> ₹79.00</span>
                         </li>
                     </ul>
-                    <button className="c">Checkout</button>
+                    <div className="chckot">
+                    <button onClick={this.checkout} className="c" >Checkout</button>
+                    </div>
                 </div>
             </div>
             </div>

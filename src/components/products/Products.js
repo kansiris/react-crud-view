@@ -42,10 +42,21 @@ class Products extends Component{
     // alert(val);
         var cartno = localStorage.getItem('cartno');
         localStorage.removeItem('cartno')
-         var cartno1 = cartno +','+ val;
+        
+        var cartno1;
+       
+        if (cartno != null) {
+            if(cartno.includes(val) == false){
+           cartno1 = cartno +','+ val;}
+        else{
+            cartno1 = cartno;
+            alert("item is already added to cart")}
        localStorage.setItem('cartno',cartno1);
        alert(localStorage.getItem('cartno'));
     }
+    else{
+        localStorage.setItem('cartno',val);
+    }}
     
 render(){
     return(
