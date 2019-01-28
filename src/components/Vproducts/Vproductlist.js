@@ -26,6 +26,14 @@ class Productlist1 extends React.Component {
 Getproducts(id){
 
 }
+//  handleChange(e){
+//   this.setState({
+//     details:e.target.value
+//   })
+// }
+// handleClick(){
+//   console.log(this.state.details);
+// }
   getproductlist() {
     fetch('http://localhost:64017/api/Product/GetAllProducts').then((res) => res.json()).then((res) => {
       this.setState({
@@ -68,7 +76,6 @@ Getproducts(id){
           ))}
         </tbody>
       </table>
-
     </div>);
   }
 }
