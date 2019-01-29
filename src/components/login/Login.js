@@ -58,19 +58,20 @@ logindetails(e)
    if(email!='' && password!='')
    {
   fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&& password ='+password,{
-    method: 'POST',
+    method: 'Get',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
   }
   }).then((response) => response.json())
-  .then((responseJson) => { 
-    localStorage.setItem('Firstname',responseJson.Firstname);
-   localStorage.setItem('Email',responseJson.Email);
-    window.location.reload();
+  .then((details) => { 
+    console.log(details);
+    localStorage.setItem('Firstname',details.Firstname);
+   localStorage.setItem('Email',details.Email);
+    // window.location.reload();
     alert('Login Successfully');
     this.setState({email:'',password:''});
-    return responseJson.success;
+    return details.success;
   }) .catch((error) => {
     console.error(error);
     alert('failed');
