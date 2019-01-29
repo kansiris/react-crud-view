@@ -15,10 +15,10 @@ class Userdetails extends Component{
     {
       super(props);
       this.state={
-        Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',
+        Firstname:'',Lastname:'',EmailId:'',Password:'',confirmpassword:'',email:'',password:'',Email:''
   
       }
-      this.state.Email=localStorage.getItem('Email');
+      this.state.EmailId=localStorage.getItem('Email');
       this.handleChange=this.handleChange.bind(this);
     //   this.Savedetails=this.Savedetails.bind(this);
     //   this.logindetails=this.logindetails.bind(this);
@@ -39,11 +39,11 @@ class Userdetails extends Component{
     {
       const{Firstname,Lastname,Email,Password}=this.state
 
-      if(this.state.Email!=null && this.state.Email!=" ")
+      if(this.state.EmailId!=null && this.state.EmailId!=" ")
       {
         
-        alert(this.state.Email);
-        fetch('http://localhost:64017/api/Customer/getcustmerlst?email='+ this.state.Email,{
+        alert(this.state.EmailId);
+        fetch('http://localhost:64017/api/Customer/getcustmerlst?email='+ this.state.EmailId,{
           method:'POST',
           body:JSON.stringify({Firstname:Firstname,Lastname:Lastname,Email:Email,Password:Password}),
           headers: {

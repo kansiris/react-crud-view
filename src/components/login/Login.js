@@ -14,8 +14,8 @@ class Login extends Component {
     super(props);
     this.state = {
       modal: false,
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:''
-
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:'',
+      items: [],
     }
     this.handleChange=this.handleChange.bind(this);
     this.Savedetails=this.Savedetails.bind(this);
@@ -53,33 +53,32 @@ sendmail(e){
 
 logindetails(e)
 {
-   const{email,password}=this.state
+   const{email,password,Firstname,Lastname,Email,Password,confirmpassword,items}=this.state
    e.preventDefault();
-   if(email!='' && password!='')
-   {
-  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&& password ='+password,{
+  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&&password='+password,{
+    // fetch('http://localhost:64017/api/Customer/UserLogin?email=lakshmi.p@xsilica.com&&password=lakshmi',{
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
   }
   }).then((response) => response.json())
-  .then((responseJson) => { 
-    localStorage.setItem('Firstname',responseJson.Firstname);
-   localStorage.setItem('Email',responseJson.Email);
+  .then((response) => { alert(response); 
+    alert(response.Firstname);
+    localStorage.setItem('Firstname',response.Firstname);
+   localStorage.setItem('Email',response.Email);
     window.location.reload();
     alert('Login Successfully');
-    this.setState({email:'',password:''});
-    return responseJson.success;
+
+    // this.setState({email:'',password:''});
+    return response.success;
   }) .catch((error) => {
     console.error(error);
     alert('failed');
   });
-}else{
-  alert("Please Login with valid Email and Password");
 }
 
-}
+ 
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;

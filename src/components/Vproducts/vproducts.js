@@ -33,8 +33,24 @@ class VProducts extends Component {
     this.Updatedetails = this.Updatedetails.bind(this);
     this.Savedetails = this.Savedetails.bind(this);
     this.handledelete = this.handledelete.bind(this);
+    this.handleCheck=this.handleCheck.bind(this);
     //   this.Savedetails=this.Savedetails.bind(this);
     //   this.logindetails=this.logindetails.bind(this);
+  }
+  getInitialState(){
+    return {checked:true}
+  }
+  handleCheck(){
+    this.setState({checked: !this.state.checked});
+  }
+  render(){
+    var msg;
+    if(this.state.checked){
+      msg ="available"
+    }
+    else{
+      msg ="not available"
+    }
   }
   componentWillMount() {
     this.getproductlist();
@@ -256,9 +272,10 @@ class VProducts extends Component {
                   <div className="col-sm-12 col-md-12 form-group">
                     <input type="password" id="confirmpassword" name="Shortdescription" placeholder="Shortdescription" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
                   </div> */}
-                      <div className="col-sm-12 col-md-12 form-group">
-                 <input type="checkbox" /> &nbsp; Check Availability
-                </div>
+                    <div className="col-sm-12 col-md-12 form-group">
+                      <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/> &nbsp; Check Availability
+                        <p> {this.msg}</p>
+                    </div>
                   <div className="col-sm-12 col-md-12 form-group">
                     <form onSubmit={this.onFormSubmit}>
                       <h1>File Upload</h1>
