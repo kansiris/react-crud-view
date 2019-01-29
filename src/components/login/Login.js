@@ -82,7 +82,15 @@ logindetails(e)
     alert('Please Login with valid Email and Password');
   });
 }
+// else{
+//   alert("Please Login with valid Email and Password");
+// }
+<<<<<<< HEAD
+ 
+
+=======
 }
+>>>>>>> f257574cabef5ec12a26695defdf1b2950dfde60
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
@@ -173,6 +181,27 @@ Savedetails(e)
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" className="maintxt form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
+                </div>
+                <div className="col-sm-12 col-md-12 form-group">
+                  {/* <input type="checkbox" /> &nbsp; Recieve promotional emails */}
+                </div>
+                <div className="col-sm-12 col-md-12 form-group">
+                  <button className="submit" onClick={this.Savedetails}>
+                    Submit &nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      </div>
+      </div></div>
+    );
+  }
+
+}
+export default Login;
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   {/* <input type="checkbox" /> &nbsp; Recieve promotional emails */}

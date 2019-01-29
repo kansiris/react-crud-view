@@ -12,7 +12,7 @@ import cosign from './components/cosign/Cosignin'
 import  Productlist from './components/products/Products'
 import Shipping from './components/Shipping/Shipping';
 // import  Productimages from './products'
-import Userdetails from './components/Userprofile/Userprofile';
+import Userdetails from './components/Userprofile/userprofile';
 import UserOrderlist from './components/Userorders/Userorderlist';
 import VProduct from './components/Vproducts/vproducts';
 import vorder from './components/Vorders/Vorder';
