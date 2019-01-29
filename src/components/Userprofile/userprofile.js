@@ -15,11 +15,14 @@ class Userdetails extends Component{
     {
       super(props);
       this.state={
-        Firstname:'',Lastname:'',EmailId:'',Password:'',confirmpassword:'',email:'',password:'',Email:''
-  
+        // Firstname:'',Lastname:'',EmailId:'',Password:'',confirmpassword:'',email:'',password:'',Email:''
+        EmailId:'', id: '', CustomerId: '', Firstname: '', Lastname: '', Billing_Address: '', Delivery_Address: '', Land_Mark: '', mobile1: '',
+        mobile2: '', CustomerType: '', DeliveryLocationLattitude: '', DeliveryLocationLongitude: '', CreateDate: '', modifieddate: '', Password: '', Email: '', OTP: '', Status: '', ProfileImage: '', ProfilePic: '',
+        City:'',State:'',Country:'',Zipecode:'',email:'',password:''
       }
       this.state.EmailId=localStorage.getItem('Email');
       this.handleChange=this.handleChange.bind(this);
+      this.Updatedetails=this.Updatedetails.bind(this);
     //   this.Savedetails=this.Savedetails.bind(this);
     //   this.logindetails=this.logindetails.bind(this);
     }
@@ -30,21 +33,20 @@ class Userdetails extends Component{
     }
     getdetails()
     {
-      const{Firstname,Lastname,Email,Password}=this.state
-
       if(this.state.EmailId!=null && this.state.EmailId!=" ")
       {
+        const{Firstname,Lastname,Email,Password}=this.state;
         alert(this.state.EmailId);
         var mail=this.state.EmailId
+        alert(mail);
         fetch('http://localhost:64017/api/Customer/getcustmer?email='+mail,{
-          method:'Get',
-          body:JSON.stringify({Firstname:Firstname,Lastname:Lastname,Email:Email,Password:Password}),
+          method:'GET',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
         }).then((res)=>res.json()).then((res)=>{
-         console.log(res);
+         alert(res);
           this.setState({Firstname:res.Firstname,Lastname:res.Lastname,Email:res.Email,Password:res.Password
           });
           alert('success')
@@ -55,8 +57,39 @@ class Userdetails extends Component{
         });
       }
     }
-    getdatabyid(){
-    
+    Updatedetails(e) {
+      e.preventDefault();
+      const {id,CustomerId,Firstname,Lastname,Billing_Address,Delivery_Address,Land_Mark,mobile1,mobile2,
+        CustomerType, DeliveryLocationLattitude, DeliveryLocationLongitude, CreateDate, modifieddate, Password, Email, OTP, Status, ProfileImage, ProfilePic,
+        City,State,Country,Zipecode } = this.state;
+      fetch('http://localhost:64017/api/Customer/updatecustomer?id='+id, {
+        method: 'POST',
+        body: JSON.stringify({
+          id: id, CustomerId: CustomerId, Firstname: Firstname, Lastname: Lastname, Billing_Address: Billing_Address, Delivery_Address: Delivery_Address,
+          Land_Mark: Land_Mark, mobile1: mobile1, mobile2: mobile2, CustomerType: CustomerType, DeliveryLocationLattitude: DeliveryLocationLattitude,
+          DeliveryLocationLongitude: DeliveryLocationLongitude, CreateDate: CreateDate, modifieddate: modifieddate, Password: Password, Email: Email, OTP: OTP, Status: Status,
+          ProfileImage: ProfileImage, ProfilePic: ProfilePic,City:City,State:State,Country:Country,Zipecode:Zipecode
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then((res) => res.json())
+        .then((res) => {
+          window.location.reload();
+          this.getdetails();
+          this.setState({
+            id: '', CustomerId: '', Firstname: '', Lastname: '', Billing_Address: '', Delivery_Address: '', Land_Mark: '', mobile1: '',
+            mobile2: '', CustomerType: '', DeliveryLocationLattitude: '', DeliveryLocationLongitude: '', CreateDate: '', modifieddate: '', Password: '', Email: '', OTP: '', Status: '', ProfileImage: '', ProfilePic: '',
+            City:'',State:'',Country:'',Zipecode:''
+          });
+          alert('sucess')
+          return res.success;
+        })
+        .catch((error) => {
+          console.error(error);
+          alert('failed');
+        });
     }
     handleChange(e) {
       const state=this.state
@@ -91,8 +124,8 @@ render(){
                   {/* <input type="checkbox" /> &nbsp; Recieve promotional emails */}
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <button className="submit" onClick={this.Savedetails}>
-                    Submit &nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>
+                  <button className="submit" onClick={this.Updatedetails}>
+                    Update &nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
