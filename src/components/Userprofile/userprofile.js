@@ -23,14 +23,7 @@ class Userdetails extends Component{
     //   this.Savedetails=this.Savedetails.bind(this);
     //   this.logindetails=this.logindetails.bind(this);
     }
-    // getdetails(email){
-    //    fetch('http://localhost:64017/api/Customer/getcustmerlst?email',+email).then((res)=>res.json)
-    //    .then((res)=>{
-    //      this.setState({
-
-    //      })
-    //    })
-    // }
+   
     componentWillMount()
     {
       this.getdetails();
@@ -41,16 +34,17 @@ class Userdetails extends Component{
 
       if(this.state.EmailId!=null && this.state.EmailId!=" ")
       {
-        
         alert(this.state.EmailId);
-        fetch('http://localhost:64017/api/Customer/getcustmerlst?email='+ this.state.EmailId,{
-          method:'POST',
+        var mail=this.state.EmailId
+        fetch('http://localhost:64017/api/Customer/getcustmer?email='+mail,{
+          method:'Get',
           body:JSON.stringify({Firstname:Firstname,Lastname:Lastname,Email:Email,Password:Password}),
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
         }).then((res)=>res.json()).then((res)=>{
+         console.log(res);
           this.setState({Firstname:res.Firstname,Lastname:res.Lastname,Email:res.Email,Password:res.Password
           });
           alert('success')
@@ -60,6 +54,9 @@ class Userdetails extends Component{
           alert('failed');
         });
       }
+    }
+    getdatabyid(){
+    
     }
     handleChange(e) {
       const state=this.state
@@ -78,10 +75,10 @@ render(){
               <h2 className="txt">User Details</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />
+                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.Firstname}  />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="form-control" onChange={this.handleChange} value={this.state.LastName} />
+                  <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="form-control" onChange={this.handleChange} value={this.state.Lastname} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" onChange={this.handleChange} value={this.state.Email} readOnly />
