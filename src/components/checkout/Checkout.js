@@ -7,7 +7,7 @@ import Header from '../Results/Header'
 class Checkout extends Component {
     constructor(props) {
         super(props);
-        this.state = { checked: false,  payment_amount: 0, amount: 0,Firstname:'',Lastname:'',Email:'',Password:'',mobile1:'' };
+        this.state = { checked: false,  payment_amount: 0, amount: 0,Firstname:'',Lastname:'',Email:'',Password:'',mobile1:'',OrderId:'',Orderdate:'',OrderStatus:'',Paymentid:'',CustomerId:'',ordertime:'',orderdeliveredtime:'',Discount:'',Remarks:'',Deliverycharges:'',CGST:'',SGST:'',Totalamount:'',Deliveryarea:'',Transactionid:'',transactionstatus:'' };
         this.handleChange = this.handleChange.bind(this);
             this.paymentHandler = this.paymentHandler.bind(this);
             this.changeAmount = this.changeAmount.bind(this);
@@ -59,6 +59,7 @@ class Checkout extends Component {
         this.setState({amount: e.target.value})
       }
     paymentHandler(e) {
+        const{OrderId,Orderdate,OrderStatus,Paymentid,CustomerId,ordertime,orderdeliveredtime,Discount,Remarks,Deliverycharges,CGST,SGST,Totalamount,Deliveryarea,Transactionid,transactionstatus}=this.state
         e.preventDefault();
         let options = {
             "key": "rzp_test_3OHEkrM9aPMz5u",
@@ -86,9 +87,22 @@ class Checkout extends Component {
             //     console.error(error);
             //     alert('failed');
             //   }); 
-           
-
-
+            fetch('http://localhost:64017/api/Order/placeorder?email='+localStorage.getItem('Email'),{
+                method: 'POST',
+                body:JSON.stringify({OrderId,Orderdate,OrderStatus,Paymentid:response.razorpay_payment_id,CustomerId,ordertime,orderdeliveredtime,Discount,Remarks,Deliverycharges,CGST,SGST,Totalamount,Deliveryarea,Transactionid:response.razorpay_payment_id,transactionstatus}),
+                 headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              }
+            }).then((response) => response.json())
+            .then((responseJson) => {
+                   this.setState({OrderId:'',Orderdate:'',OrderStatus:'',Paymentid:'',CustomerId:'',ordertime:'',orderdeliveredtime:'',Discount:'',Remarks:'',Deliverycharges:'',CGST:'',SGST:'',Totalamount:'',Deliveryarea:'',Transactionid:'',transactionstatus:''});
+                   return responseJson.success;      
+            })
+            .catch((error) => {
+              console.error(error);
+              alert('failed');
+            });
             },
             "prefill": {
               "name": "Harshil Mathur",
