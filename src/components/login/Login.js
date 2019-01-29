@@ -74,19 +74,11 @@ logindetails(e)
     return response.success;
   }) .catch((error) => {
     console.error(error);
-    alert('failed');
+    alert('Please Login with valid Email and Password');
   });
-}
-// else{
-//   alert("Please Login with valid Email and Password");
-// }
+}}
 
-<<<<<<< HEAD
- 
 
-=======
-}
->>>>>>> f257574cabef5ec12a26695defdf1b2950dfde60
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
