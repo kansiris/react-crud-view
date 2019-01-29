@@ -29,7 +29,7 @@ class Products extends Component{
     } 
     getproductdetails()
     {
-        fetch('http://localhost:64017/api/Product/GetAllProducts').then(res=>res.json()).then(details=>{
+        fetch('http://localhost:64017/api/Product/Productsavailabe').then(res=>res.json()).then(details=>{
          this.setState({
             productdetails:details
          });

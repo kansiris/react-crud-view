@@ -30,13 +30,14 @@ class Checkout extends Component {
                         <div className="col-sm-8 col-md-8">
                             <form>
                                 <h2 className="txt">Billing Information</h2>
-                                <div className="row">
+                                <div className="row"> 
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="First Name" name="First Name" placeholder="First Name" className="form-control chcktxt" />
+                                        <input type="text" id="First Name" name="First Name" placeholder="First Name" className="chcktxt form-control" />
                                     </div>
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="Last Name" name="last Name" placeholder="Last Name" className="form-control" />
+                                        <input type="text" id="Last Name" name="last Name" placeholder="Last Name" className="chcktxt form-control" />
                                     </div>
+                                </div>
                                     <div className="col-sm-6 col-md-6 form-group">
                                         <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" />
                                     </div>
@@ -61,7 +62,7 @@ class Checkout extends Component {
                                     <div className="col-sm-6 col-md-6 form-group">
                                         <input type="text" id="Zip Code" name="Zip Code" placeholder="Zip Code" className="form-control" />
                                     </div>
-                                    <div className="col-sm-12 col-md-12 form-group">
+                                    {/* <div className="col-sm-12 col-md-12 form-group">
                                         <input type="checkbox" /> &nbsp; <b>RECIEVE PROMOTIONAL EMAILS</b>
                                     </div>
                                     <div className="col-sm-12 col-md-12"><h2 className="txt">Shipping Information</h2></div>
@@ -100,8 +101,8 @@ class Checkout extends Component {
                                         <button className="submit float-right">
                                             Next Step &nbsp;<i className="fa fa-arrow-right" aria-hidden="true"></i>
                                         </button>
-                                    </div>
-                                </div>
+                                    </div> */}
+                                {/* </div> */}
                             </form>
                         </div>
                         <div className="col-sm-4 col-md-4">

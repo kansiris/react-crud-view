@@ -67,18 +67,22 @@ logindetails(e)
     alert(response.Firstname);
     localStorage.setItem('Firstname',response.Firstname);
    localStorage.setItem('Email',response.Email);
+    // window.location.reload();
     window.location.reload();
     alert('Login Successfully');
-
+    this.setState({email:'',password:''});
     // this.setState({email:'',password:''});
     return response.success;
   }) .catch((error) => {
     console.error(error);
     alert('failed');
   });
+}else{
+  alert("Please Login with valid Email and Password");
 }
 
  
+}
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;

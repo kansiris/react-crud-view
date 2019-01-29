@@ -14,8 +14,8 @@ class Login extends Component {
     super(props);
     this.state = {
       modal: false,
-      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:'',
-      items: [],
+      Firstname:'',Lastname:'',Email:'',Password:'',confirmpassword:'',email:'',password:'',sentemail:''
+
     }
     this.handleChange=this.handleChange.bind(this);
     this.Savedetails=this.Savedetails.bind(this);
@@ -53,34 +53,17 @@ sendmail(e){
 
 logindetails(e)
 {
-   const{email,password,Firstname,Lastname,Email,Password,confirmpassword,items}=this.state
+   const{email,password}=this.state
    e.preventDefault();
-<<<<<<< HEAD
-  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&&password='+password,{
-    // fetch('http://localhost:64017/api/Customer/UserLogin?email=lakshmi.p@xsilica.com&&password=lakshmi',{
-    method: 'POST',
-=======
    if(email!='' && password!='')
    {
   fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&& password ='+password,{
     method: 'Get',
->>>>>>> 878f2e7cc8dcaec26faa6c29cdaf65fe253d651f
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
   }
   }).then((response) => response.json())
-<<<<<<< HEAD
-  .then((response) => { alert(response); 
-    alert(response.Firstname);
-    localStorage.setItem('Firstname',response.Firstname);
-   localStorage.setItem('Email',response.Email);
-    window.location.reload();
-    alert('Login Successfully');
-
-    // this.setState({email:'',password:''});
-    return response.success;
-=======
   .then((details) => { 
     console.log(details);
     localStorage.setItem('Firstname',details.Firstname);
@@ -89,14 +72,15 @@ logindetails(e)
     alert('Login Successfully');
     this.setState({email:'',password:''});
     return details.success;
->>>>>>> 878f2e7cc8dcaec26faa6c29cdaf65fe253d651f
   }) .catch((error) => {
     console.error(error);
     alert('failed');
   });
+}else{
+  alert("Please Login with valid Email and Password");
 }
 
- 
+}
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
