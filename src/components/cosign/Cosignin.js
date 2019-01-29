@@ -80,10 +80,10 @@ class Cosignin extends Component {
                         <p>If you already have an account, please sign in here before checking out.</p>
                         <div className="row">
                             <div className="col-sm-12 col-md-12 form-group">
-                                <input type="text" placeholder="Email" id="Email" name="Email" className="form-control" onChange={this.handleChange} value={this.state.Email} />
+                                <input type="text" placeholder="Email" id="Email" name="Email" className="maintxt form-control" onChange={this.handleChange} value={this.state.Email} />
                             </div>
                             <div className="col-sm-12 col-md-12 form-group">
-                                <input type="password" placeholder="Password" id="Password" name="Password" className="form-control" onChange={this.handleChange} value={this.state.Password} />
+                                <input type="password" placeholder="Password" id="Password" name="Password" className="maintxt form-control" onChange={this.handleChange} value={this.state.Password} />
                             </div>
                             <div className="col-sm-12  col-md-12 form-group">
                             <MDBContainer>
@@ -91,7 +91,7 @@ class Cosignin extends Component {
       <MDBModal isOpen={this.state.modal} toggle={this.toggle} centered>
         <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
         <MDBModalBody>
-        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="form-control" onChange={this.handleChange} value={this.state.sentemail} />
+        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="maintxt form-control" onChange={this.handleChange} value={this.state.sentemail} />
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>

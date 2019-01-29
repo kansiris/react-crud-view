@@ -53,33 +53,35 @@ sendmail(e){
 
 logindetails(e)
 {
+  var url = document.referrer;
+  alert(url);
+  var url1 = url.split('://')[1].split('/')[1]
    const{email,password,Firstname,Lastname,Email,Password,confirmpassword,items}=this.state
    e.preventDefault();
    if(email!='',password!='')
    {
-  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email +'&&password='+password,{
-    method: 'POST',
+  fetch('http://localhost:64017/api/Customer/UserLogin?email='+email+'&&password='+password,{
+    method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
   }
   }).then((response) => response.json())
   .then((response) => { 
-    localStorage.setItem('Firstname',response.Firstname);
+    if(response.Firstname !=null && response.Email != null )
+    {localStorage.setItem('Firstname',response.Firstname);
    localStorage.setItem('Email',response.Email);
-    window.location.reload();
+   this.props.history.push("/"+url1);
     alert('Login Successfully');
-    this.setState({email:'',password:''});
-   alert('Login Successfully');
+    // this.setState({email:'',password:''});
+    }
+    else{ alert("Please Login with valid Email and Password");}
     return response.success;
   }) .catch((error) => {
     console.error(error);
-    alert('failed');
+    alert('Please Login with valid Email and Password');
   });
-}else{
-  alert("Please Login with valid Email and Password");
 }
-
 }
 Savedetails(e)
 {
@@ -123,10 +125,10 @@ Savedetails(e)
               <h2 className="txt">Sign In</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" placeholder="Email" id="email" name="email" className="form-control" onChange={this.handleChange} value={this.state.email} />
+                  <input type="text" placeholder="Email" id="email" name="email" className=" maintxt form-control" onChange={this.handleChange} value={this.state.email} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="password" placeholder="Password" id="password" name="password" className="form-control" onChange={this.handleChange} value={this.state.password} />
+                  <input type="password" placeholder="Password" id="password" name="password" className="maintxt form-control" onChange={this.handleChange} value={this.state.password} />
                 </div>
                 <div className="col-sm-12  col-md-12 form-group">
                   {/* <button className="btntxt">
@@ -138,7 +140,7 @@ Savedetails(e)
       <MDBModal isOpen={this.state.modal} toggle={this.toggle}  centered>
         <MDBModalHeader toggle={this.toggle}>Enter Email</MDBModalHeader>
         <MDBModalBody>
-        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="form-control" onChange={this.handleChange} value={this.state.sentemail} />
+        <input type="text" placeholder="Email" id="sentemail" name="sentemail" className="maintxt form-control" onChange={this.handleChange} value={this.state.sentemail} />
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
@@ -158,19 +160,19 @@ Savedetails(e)
               <h2 className="txt">Register a New Account</h2>
               <div className="row">
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange} value={this.state.FirstName}  />
+                  <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="maintxt form-control" onChange={this.handleChange} value={this.state.FirstName}  />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="form-control" onChange={this.handleChange} value={this.state.LastName} />
+                  <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="maintxt form-control" onChange={this.handleChange} value={this.state.LastName} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" onChange={this.handleChange} value={this.state.Email} />
+                  <input type="text" id="Email" name="Email" placeholder="Email" className="maintxt form-control" onChange={this.handleChange} value={this.state.Email} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="password" id="Password" name="Password" placeholder="Password" className="form-control" onChange={this.handleChange} value={this.state.Password} />
+                  <input type="password" id="Password" name="Password" placeholder="Password" className="maintxt form-control" onChange={this.handleChange} value={this.state.Password} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
-                  <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
+                  <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" className="maintxt form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
                 </div>
                 <div className="col-sm-12 col-md-12 form-group">
                   {/* <input type="checkbox" /> &nbsp; Recieve promotional emails */}
