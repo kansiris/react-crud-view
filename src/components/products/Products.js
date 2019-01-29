@@ -29,7 +29,7 @@ class Products extends Component{
     } 
     getproductdetails()
     {
-        fetch('http://localhost:64017/api/Product/GetAllProducts').then(res=>res.json()).then(details=>{
+        fetch('http://localhost:64017/api/Product/Productsavailabe').then(res=>res.json()).then(details=>{
          this.setState({
             productdetails:details
          });
@@ -41,10 +41,22 @@ class Products extends Component{
 
     // alert(val);
         var cartno = localStorage.getItem('cartno');
-         var cartno1 = cartno +','+ val;
+        localStorage.removeItem('cartno')
+        
+        var cartno1;
+       
+        if (cartno != null) {
+            if(cartno.includes(val) == false){
+           cartno1 = cartno +','+ val;}
+        else{
+            cartno1 = cartno;
+            alert("item is already added to cart")}
        localStorage.setItem('cartno',cartno1);
        alert(localStorage.getItem('cartno'));
     }
+    else{
+        localStorage.setItem('cartno',val);
+    }}
     
 render(){
     return(

@@ -4,8 +4,13 @@
     padding-left: 2%;
 }
 .form-control{
-    width: 85%;
+    width: 100%;
     height: calc(3.25rem + 2px);
+}
+.chcktxt
+{
+    width: 100%;
+    height: calc(3.05rem + 0px);
 }
 .submit{
     background-color:#0c4d6c;

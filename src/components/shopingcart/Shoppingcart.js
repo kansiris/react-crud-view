@@ -6,12 +6,20 @@ import Logindropdown from '../dropdown/logindropdown'
 class Shoppingcart extends Component {
     constructor(props){
         super(props);
-        this.state={counter: 0,price1:80,result:'',productdetails:[],
-        id:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
+        this.state={counter: 1,price1:80,result:'',productdetails:[],
+       id:'',ids:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
         brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]};
-        this.state.id=localStorage.getItem('cartno')
+        this.state.ids=localStorage.getItem('cartno')
          this.increment=this.increment.bind(this);
         this.decrement=this.decrement.bind(this);
+        this.remove=this.remove.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.checkout=this.checkout.bind(this);
+    }
+    handleChange(e) {
+        const state=this.state
+      state[e.target.id]=e.target.value;
+      this.setState(state);
     }
 
     componentWillMount()
@@ -22,13 +30,18 @@ class Shoppingcart extends Component {
     getitems()
     {
     //   const{id}=this.state
-      fetch('http://localhost:64017/api/Product/GetProductlistbyid?id='+this.state.id).then(res=>res.json()).then(details=>{
-        this.setState({
-           productdetails:details
-        });
+      fetch('http://localhost:64017/api/Product/GetProductlistbyid?id='+this.state.ids).then(res=>res.json()).then(details=>{
+         this.setState({
+            productdetails:details
+         });
+
      })
     }
    
+    
+   
+
+
     increment() {
         this.setState({
           counter: this.state.counter + 1
@@ -51,6 +64,47 @@ class Shoppingcart extends Component {
              });
           }  
       }
+    remove(val)
+    {
+
+      var idss = localStorage.getItem('cartno');
+      alert(idss);
+     
+      var n=idss.replace('undefined','').split(',');
+      var j;
+    //   alert(j);
+      for(var i=0; i< n.length; i++)
+      {
+        
+          if(n[i]==val)
+          {
+              n[i]=null;
+              j=n[i]+','+j
+             
+          }
+        else {
+            j=n[i]+','+j
+        }
+       
+      }
+      var y= j.replace(null,'');
+      var w=y.replace('undefined','');
+      localStorage.removeItem('cartno');
+      localStorage.setItem('cartno',w.replace('null',''));
+      window.location.reload();
+    }
+
+    checkout()
+    {
+        if(localStorage.getItem('Firstname')!=null && localStorage.getItem('Email') !=null)
+        {
+           this.props.history.push("/checkout")
+           
+        }
+        else{ this.props.history.push("/cosign")}
+    }
+
+
     render() {
         return (
             <div>
@@ -93,26 +147,28 @@ class Shoppingcart extends Component {
                                     <div className="col-sm-12 col-md-12">
                                         <div className="num">
                                             <div className="selectnumber">
-                                                <button onClick={this.decrement} className="fa fa-minus dec"></button>
-                                                <input type="text" className="number" value={this.state.counter}/>
+                                                <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
+                                                <input type="text" id={item.id} className="number" value={this.state.counter} onChange={this.handleChange}/>&nbsp;
                                                 <button onClick={this.increment} className="fa fa-plus dec"></button>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                   {this.state.result}
+                                    {/* {this.state.result} */}
+                                   {this.state.counter * item.Price}
                                </td>
-                                <td><i className="fa fa-times fa-2x" aria-hidden="true"></i></td>
+                                {/* <td><button onClick={(e)=>this.remove(item.id)} ><i className="fa fa-times fa-1x" aria-hidden="true" ></i></button></td> */}
+                                <td><i className="fa fa-times fa-1x" aria-hidden="true" onClick={(e)=>this.remove(item.id)} ></i></td>
                             </tr>
               ))}
                         </tbody>
                     </table>
                     <div className="row">
                         <div className="col-sm-4 col-md-4">
-                            <button className="updatebtn">
+                           <a href='/products'> <button className="updatebtn">
                                 <i className="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Continue Shopping
-                        </button>
+                        </button></a>
                         </div>
                         <div className="col-sm-4 col-md-4">
                             <input type="text" id="Coupon code" name="Coupon code" placeholder="Coupon code" className="form-control" />
@@ -135,7 +191,9 @@ class Shoppingcart extends Component {
                            <span className="rupee" style={{float:"right"}}> ₹79.00</span>
                         </li>
                     </ul>
-                    <button className="c">Checkout</button>
+                    <div className="chckot">
+                    <button onClick={this.checkout} className="c" >Checkout</button>
+                    </div>
                 </div>
             </div>
             </div>
