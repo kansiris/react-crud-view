@@ -39,13 +39,13 @@ class Header extends React.Component {
                       </select>
      */}
     
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div className="dropdown">
+  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {this.state.name}
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="/Userdetails">Profile</a>
-    <a class="dropdown-item" href="#" onClick={this.logout}>Logout</a>
+  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a className="dropdown-item" href="/Userdetails">Profile</a>
+    <a className="dropdown-item" href="#" onClick={this.logout}>Logout</a>
   </div>
 </div>
 
