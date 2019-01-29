@@ -77,12 +77,13 @@ logindetails(e)
     console.error(error);
     alert('failed');
   });
-}else{
-  alert("Please Login with valid Email and Password");
 }
+// else{
+//   alert("Please Login with valid Email and Password");
+// }
 
  
-}
+
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
