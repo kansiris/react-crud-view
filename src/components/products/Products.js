@@ -28,10 +28,10 @@ class Products extends Component{
        this.getproductdetails();
     } 
     getproductdetails()
-    {
-        fetch('http://localhost:64017/api/Product/Productsavailabe').then(res=>res.json()).then(details=>{
+    { var Available1= "Available";
+        fetch('http://localhost:64017/api/Product/Productsavailabe?Available='+Available1).then((res)=>res.json()).then((res)=>{
          this.setState({
-            productdetails:details
+            productdetails:res
          });
       })
     }

@@ -11,11 +11,32 @@ class Header extends React.Component {
   constructor(){
     super();
   this.state = {
-    name:'',isOpen: false
+    name:'',isOpen: false,cartno:'',cartvalue:''
   };
     this.state.name = localStorage.getItem('Firstname');
+    this.state.cartvalue=localStorage.getItem('cartvalue');
    
  }
+ componentWillMount(){
+   if(this.state. cartvalue!=null){
+
+  
+  
+  var i=this.state.cartvalue;
+  var z=0;
+ for(var x=0;x<i.split(',').length;x++){
+   if(i.split(',')[x]!=undefined&&i.split(',')[x]!=null){
+       z++ 
+   }
+ }
+
+  this.state.cartno=z;
+ }else{
+   this.state.cartno=0;
+ }
+
+}
+
 
  logout = ()=>{
   localStorage.removeItem('Firstname');
@@ -40,13 +61,20 @@ class Header extends React.Component {
      */}
     
     <div className="dropdown">
-  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  {this.state.name}
-  </button>
-  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a className="dropdown-item" href="/Userdetails">Profile</a>
-    <a className="dropdown-item" href="#" onClick={this.logout}>Logout</a>
+  
+  {/* <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"> */}
+  <div className="row">
+      <div className="col-sm-3 col-md-3">
+          <button className="dropdown-item" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+          {this.state.name}
+          </button>
+      </div>
+      <div className="col-sm-3 col-md-3"><button className="dropdown-item" href="/Userdetails">Profile</button></div>
+      <div className="col-sm-3 col-md-3"> <button className="dropdown-item" href="#" onClick={this.logout}>Logout</button></div>
+   
   </div>
+   
+  {/* </div> */}
 </div>
 
     
@@ -130,6 +158,9 @@ render(){
    
     <form className="form-inline my-2 my-lg-0">
 {this.renderButton1()}
+<div>
+{this.state.cartno}Items
+</div>
     <a href="/Shopingcart" style={{color:'black'}}> <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> </a>
       {/* <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}

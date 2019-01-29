@@ -36,9 +36,9 @@ class Userdetails extends Component{
       if(this.state.EmailId!=null && this.state.EmailId!=" ")
       {
         const{Firstname,Lastname,Email,Password}=this.state;
-        alert(this.state.EmailId);
+        // alert(this.state.EmailId);
         var mail=this.state.EmailId
-        alert(mail);
+        // alert(mail);
         fetch('http://localhost:64017/api/Customer/getcustmer?email='+mail,{
           method:'GET',
           headers: {
@@ -55,6 +55,8 @@ class Userdetails extends Component{
           console.error(error);
           alert('failed');
         });
+      }else{
+        this.props.history.push("/Login");
       }
     }
     Updatedetails(e) {

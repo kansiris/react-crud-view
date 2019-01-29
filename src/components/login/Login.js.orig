@@ -81,11 +81,20 @@ logindetails(e)
     console.error(error);
     alert('Please Login with valid Email and Password');
   });
-}}
+}
+<<<<<<< HEAD
+=======
 // else{
 //   alert("Please Login with valid Email and Password");
 // }
 
+<<<<<<< HEAD
+ 
+
+=======
+>>>>>>> 4f27ebec65c0e472122b242f23a85baf57f7be83
+}
+>>>>>>> f257574cabef5ec12a26695defdf1b2950dfde60
 Savedetails(e)
 {
    const{Firstname,Lastname,Email,Password,confirmpassword}=this.state;
@@ -196,6 +205,4 @@ Savedetails(e)
   }
 
 }
-
-
 export default Login;
