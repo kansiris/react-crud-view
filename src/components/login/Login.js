@@ -197,6 +197,4 @@ Savedetails(e)
 
 }
 
-
-}
 export default Login;
