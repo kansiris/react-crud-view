@@ -10,8 +10,8 @@ class Shoppingcart extends Component {
        id:'',ids:'',ProductId:'', Productname:'',Price:'',Quantity:'',weight:'',ShortDescription:'',LongDescription:'',Remarks:'',Available:'',HSNcode:'',SGST:'',CGST:'',Discount:'',
         brand:'',Image:'',Manfacturedate:'',Expirydate:'',createdate:'',Updateddate:'',cartlist:[]};
         this.state.ids=localStorage.getItem('cartno')
-         this.increment=this.increment.bind(this);
-        this.decrement=this.decrement.bind(this);
+        //  this.increment=this.increment.bind(this);
+        // this.decrement=this.decrement.bind(this);
         this.remove=this.remove.bind(this);
         this.handleChange=this.handleChange.bind(this);
         this.checkout=this.checkout.bind(this);
@@ -19,9 +19,10 @@ class Shoppingcart extends Component {
     }
     handleChange(e) {
         const state=this.state
-      state[e.target.id]=e.target.value;
+      state[e.target.name]=e.target.value;
       this.setState(state);
     }
+    
     // handleChange2(e) {
     //     const state=this.state
     //   state[e.target.className]=e.target.value;
@@ -43,26 +44,27 @@ class Shoppingcart extends Component {
 
      })
     }
-    increment() {
-        this.setState({
-            counter: this.state.counter + 1
-          });
-       const cal=this.state.counter * this.state.Price
-            this.setState({
-             result:cal
-             });
-      }
-      decrement(){
-          if(this.state.counter > 0){
-            this.setState({
-                counter: this.state.counter - 1
-              });
-              const cal=this.state.counter * this.state.Price
-            this.setState({
-             result:cal
-             });
-          }  
-      }
+  
+    // increment() {
+    //     this.setState({
+    //         counter: this.state.counter + 1
+    //       });
+    //    const cal=this.state.counter * this.state.Price
+    //         this.setState({
+    //          result:cal
+    //          });
+    //   }
+    //   decrement(){
+    //       if(this.state.counter > 0){
+    //         this.setState({
+    //             counter: this.state.counter - 1
+    //           });
+    //           const cal=this.state.counter * this.state.Price
+    //         this.setState({
+    //          result:cal
+    //          });
+    //       }  
+    //   }
     remove(val)
     {
 
@@ -92,7 +94,6 @@ class Shoppingcart extends Component {
       localStorage.setItem('cartno',w.replace('null',''));
       window.location.reload();
     }
-
     checkout()
     {
         if(localStorage.getItem('Firstname')!=null && localStorage.getItem('Email') !=null)
@@ -102,8 +103,6 @@ class Shoppingcart extends Component {
         }
         else{ this.props.history.push("/cosign")}
     }
-
-
     render() {
         return (
             <div>
@@ -146,16 +145,19 @@ class Shoppingcart extends Component {
                                     <div className="col-sm-12 col-md-12">
                                         <div className="num">
                                             <div className="selectnumber">
-                                                <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
+                                            <input type="number"  name="quantity" min="1" max="100"  onChange={this.handleChange} />
+                                            {/* <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
                                                 <input type="text" id={item.id} className="number" value={this.state.counter} onChange={this.handleChange}/>&nbsp;
-                                                <button onClick={this.increment} className="fa fa-plus dec"></button>
+                                                <button onClick={this.increment} className="fa fa-plus dec"></button> */}
+                                             
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    {/* {this.state.result} */}
-                                   {this.state.counter * item.Price}
+                                 
+                                 
+                                   {/* {this.state.quantity * item.Price}  */}
                                </td>
                                 {/* <td><button onClick={(e)=>this.remove(item.id)} ><i className="fa fa-times fa-1x" aria-hidden="true" ></i></button></td> */}
                                 <td><i className="fa fa-times fa-1x" aria-hidden="true" onClick={(e)=>this.remove(item.id)} ></i></td>
