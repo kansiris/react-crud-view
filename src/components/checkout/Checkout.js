@@ -7,34 +7,18 @@ import Header from '../Results/Header'
 class Checkout extends Component {
     constructor(props) {
         super(props);
-        this.state = { checked: false,  payment_amount: 0, amount: 0 };
+        this.state = { checked: false,  payment_amount: 0, amount: 0,Firstname:'',Lastname:'',Email:'',Password:'',mobile1:'',OrderId:'',Orderdate:'',OrderStatus:'',Paymentid:'',CustomerId:'',ordertime:'',orderdeliveredtime:'',Discount:'',Remarks:'',Deliverycharges:'',CGST:'',SGST:'',Totalamount:'',Deliveryarea:'',Transactionid:'',transactionstatus:'' };
         this.handleChange = this.handleChange.bind(this);
             this.paymentHandler = this.paymentHandler.bind(this);
             this.changeAmount = this.changeAmount.bind(this);
-            // this.options = Object.assign(
-            //     {}, 
-            //     {
-            //         "key": "rzp_test_3OHEkrM9aPMz5u",
-            //         "amount": "2000", // 2000 paise = INR 20
-            //         "name": "Merchant Name",
-            //         "description": "Purchase Description",
-            //         "image": "/your_logo.png",
-            //         "handler": (response) => {
-            //             alert(response.razorpay_payment_id);
-            //         },
-            //         "prefill": {
-            //             "name": "Harshil Mathur",
-            //             "email": "harshil@razorpay.com"
-            //         },
-            //         "notes": {
-            //             "address": "Hello World"
-            //         },
-            //         "theme": {
-            //             "color": "#F37254"
-            //         }
-            //     }, 
-            //     props.rzp1 // any options you pass via props will override the defaults
-            // );
+            this.handleChange2=this.handleChange2.bind(this);
+       
+        }
+
+        handleChange2(e) {
+            const state=this.state
+          state[e.target.id]=e.target.value;
+          this.setState(state);
         }
     
     componentDidMount () {
@@ -45,6 +29,27 @@ class Checkout extends Component {
 
         document.body.appendChild(script);
     }
+    componentWillMount(){
+        const{Firstname,Lastname,Email}=this.state
+        if(localStorage.getItem('Email')!=null && localStorage.getItem('Email')!='null')
+        {
+            fetch('http://localhost:64017/api/Customer/getcustmer?email='+localStorage.getItem('Email'),{
+                method:'Get',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+                }).then((response) => response.json()).then((res) => {
+                    this.setState({Firstname:res.Firstname,Lastname:res.Lastname,Email:res.Email
+                    });
+                    return res.sucess;
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('failed');
+              });
+        }
+    }
     handleChange() {
         this.setState({
             checked: !this.state.checked
@@ -54,6 +59,7 @@ class Checkout extends Component {
         this.setState({amount: e.target.value})
       }
     paymentHandler(e) {
+        const{OrderId,Orderdate,OrderStatus,Paymentid,CustomerId,ordertime,orderdeliveredtime,Discount,Remarks,Deliverycharges,CGST,SGST,Totalamount,Deliveryarea,Transactionid,transactionstatus}=this.state
         e.preventDefault();
         let options = {
             "key": "rzp_test_3OHEkrM9aPMz5u",
@@ -63,6 +69,40 @@ class Checkout extends Component {
             "image": "/your_logo.png",
             "handler": function (response){
               alert(response.razorpay_payment_id);
+
+            //   fetch('url='+mail,{
+            //     method:'Post',
+            //     body:JSON.stringify({Firstname:Firstname,Lastname:Lastname,Email:Email,Password:Password}),
+            //     headers: {
+            //       'Accept': 'application/json',
+            //       'Content-Type': 'application/json'
+            //   }
+            //   }).then((res)=>res.json()).then((res)=>{
+            //    console.log(res);
+            //     this.setState({Firstname:res.Firstname,Lastname:res.Lastname,Email:res.Email,Password:res.Password
+            //     });
+            //     alert('success')
+            //     return res.success;
+            //   }).catch((error) => {
+            //     console.error(error);
+            //     alert('failed');
+            //   }); 
+            fetch('http://localhost:64017/api/Order/placeorder?email='+localStorage.getItem('Email'),{
+                method: 'POST',
+                body:JSON.stringify({OrderId,Orderdate,OrderStatus,Paymentid:response.razorpay_payment_id,CustomerId,ordertime,orderdeliveredtime,Discount,Remarks,Deliverycharges,CGST,SGST,Totalamount,Deliveryarea,Transactionid:response.razorpay_payment_id,transactionstatus}),
+                 headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              }
+            }).then((response) => response.json())
+            .then((responseJson) => {
+                   this.setState({OrderId:'',Orderdate:'',OrderStatus:'',Paymentid:'',CustomerId:'',ordertime:'',orderdeliveredtime:'',Discount:'',Remarks:'',Deliverycharges:'',CGST:'',SGST:'',Totalamount:'',Deliveryarea:'',Transactionid:'',transactionstatus:''});
+                   return responseJson.success;      
+            })
+            .catch((error) => {
+              console.error(error);
+              alert('failed');
+            });
             },
             "prefill": {
               "name": "Harshil Mathur",
@@ -100,17 +140,17 @@ class Checkout extends Component {
                                 <h2 className="txt">Billing Information</h2>
                                 <div className="row"> 
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="First Name" name="First Name" placeholder="First Name" className="chcktxt form-control" />
+                                        <input type="text" id="Firstname" name="Firstname" placeholder="First Name" className="form-control" onChange={this.handleChange2} value={this.state.Firstname}/>
                                     </div>
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="Last Name" name="last Name" placeholder="Last Name" className="chcktxt form-control" />
+                                        <input type="text" id="Lastname" name="Lastname" placeholder="Last Name" className="form-control" onChange={this.handleChange2} value={this.state.Lastname} />
                                     </div>
                                 </div>
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" />
+                                        <input type="text" id="Email" name="Email" placeholder="Email" className="form-control" onChange={this.handleChange2} value={this.state.Email} />
                                     </div>
                                     <div className="col-sm-6 col-md-6 form-group">
-                                        <input type="text" id="Phone Number" name="Phone Number" placeholder="Phone Number" className="form-control" />
+                                        <input type="text" id="mobile1" name="mobile1" placeholder="Phone Number" className="form-control" />
                                     </div>
                                     <div className="col-sm-12 col-md-12 form-group">
                                         <input type="text" id="Address Line1" name="Address Line1" placeholder="Address Line1" className="form-control" />

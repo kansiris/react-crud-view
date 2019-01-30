@@ -81,7 +81,7 @@ logindetails(e)
     console.error(error);
     alert('Please Login with valid Email and Password');
   });
-   }}
+}}
 // else{
 //   alert("Please Login with valid Email and Password");
 // }
@@ -198,5 +198,4 @@ Savedetails(e)
 }
 
 
-}
 export default Login;
