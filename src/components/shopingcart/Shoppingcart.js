@@ -15,12 +15,18 @@ class Shoppingcart extends Component {
         this.remove=this.remove.bind(this);
         this.handleChange=this.handleChange.bind(this);
         this.checkout=this.checkout.bind(this);
+        // this.handleChange2=this.handleChange2.bind(this);
     }
     handleChange(e) {
         const state=this.state
       state[e.target.id]=e.target.value;
       this.setState(state);
     }
+    // handleChange2(e) {
+    //     const state=this.state
+    //   state[e.target.className]=e.target.value;
+    //   this.setState(state);
+    // }
 
     componentWillMount()
     {
@@ -37,21 +43,14 @@ class Shoppingcart extends Component {
 
      })
     }
-   
-    
-   
-
-
     increment() {
         this.setState({
-          counter: this.state.counter + 1
-
-        });
+            counter: this.state.counter + 1
+          });
        const cal=this.state.counter * this.state.Price
             this.setState({
              result:cal
              });
-
       }
       decrement(){
           if(this.state.counter > 0){

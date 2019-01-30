@@ -19,6 +19,7 @@ import vorder from './components/Vorders/Vorder';
 import vcustomer from './components/Vcustomer/Vcustomer';
 import dropdown from './components/Results/dropdown'
 import products from './components/products/Products';
+import Thankyoupage from './components/Thankyoupage/Thankyoupage';
 import logindropdown from './components/dropdown/logindropdown'
 
 const Routes =()=>(
@@ -42,6 +43,7 @@ const Routes =()=>(
       {/* <Route exact path="/logindropdown" component={logindropdown}/> */}
       <Route exact path="/Shipping" component={Shipping}/>
       <Route exact path="/products" component={products}/>
+      <Route exact path="/Thankyoupage" component={Thankyoupage}/>
 
       <Route exact path="*" component={Notfound}/>
 

@@ -11,10 +11,11 @@ import Adminsidebar from '../Adminsidebar/Adminsidebar';
 import Productlist1 from './Vproductlist'
 import './vproducts.css';
 import { MDBIcon } from 'mdbreact';
+// import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 class VProducts extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       mode: 'view', Firstname: '', Lastname: '', Email: '', Password: '', confirmpassword: '', email: '', password: '',
       name: '', details: [], id: '', ProductId: '', Productname: '', Price: '', Quantity: '', weight: '', ShortDescription: '', LongDescription: '',
       Remarks: '', Available: '', HSNcode: '', SGST: '', CGST: '', Discount: '', brand: '', Image: '', Manfacturedate: '', Expirydate: '', createdate: '', Updateddate: ''
@@ -30,28 +31,34 @@ class VProducts extends Component {
     this.handleEdit1 = this.handleEdit1.bind(this);
     this.onChange = this.onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange1=this.handleChange1.bind(this);
     this.Updatedetails = this.Updatedetails.bind(this);
     this.Savedetails = this.Savedetails.bind(this);
     this.handledelete = this.handledelete.bind(this);
-    this.handleCheck=this.handleCheck.bind(this);
+    // this.handleCheck=this.handleCheck.bind(this);
     //   this.Savedetails=this.Savedetails.bind(this);
     //   this.logindetails=this.logindetails.bind(this);
   }
   getInitialState(){
-    return {checked:true}
+    return {selectValue:'Available'}
   }
-  handleCheck(){
-    this.setState({checked: !this.state.checked});
+  handleChange1(e){
+    // e.preventDefault();
+    this.setState({selectValue:e.target.value});
+    // this.Updatedetails();
   }
-  render(){
-    var msg;
-    if(this.state.checked){
-      msg ="available"
-    }
-    else{
-      msg ="not available"
-    }
-  }
+  // handleCheck(){
+  //   this.setState({checked: !this.state.checked});
+  // }
+  // render(){
+  //   var msg;
+  //   if(this.state.checked){
+  //     msg ="available"
+  //   }
+  //   else{
+  //     msg ="not available"
+  //   }
+  // }
   componentWillMount() {
     this.getproductlist();
   }
@@ -72,7 +79,7 @@ class VProducts extends Component {
       method: 'Post',
       body: JSON.stringify({
         id: id, ProductId: ProductId, Productname: Productname, Price: Price, Quantity: Quantity, weight: weight,
-        ShortDescription: ShortDescription, LongDescription: LongDescription, Remarks: Remarks, Available: Available, HSNcode: HSNcode,
+        ShortDescription: ShortDescription, LongDescription: LongDescription, Remarks: Remarks, Available: this.state.selectValue, HSNcode: HSNcode,
         SGST: SGST, CGST: CGST, Discount: Discount, brand: brand, Image: Image, Manfacturedate: Manfacturedate, Expirydate: Expirydate,
         createdate: createdate, Updateddate: Updateddate
       }),
@@ -110,7 +117,7 @@ class VProducts extends Component {
       method: 'POST',
       body: JSON.stringify({
         id: id, ProductId: ProductId, Productname: Productname, Price: Price, Quantity: Quantity, weight: weight,
-        ShortDescription: ShortDescription, LongDescription: LongDescription, Remarks: Remarks, Available: Available, HSNcode: HSNcode,
+        ShortDescription: ShortDescription, LongDescription: LongDescription, Remarks: Remarks, Available: this.state.selectValue, HSNcode: HSNcode,
         SGST: SGST, CGST: CGST, Discount: Discount, brand: brand, Image: Image, Manfacturedate: Manfacturedate, Expirydate: Expirydate,
         createdate: createdate, Updateddate: Updateddate
       }),
@@ -217,6 +224,7 @@ class VProducts extends Component {
     }
   }
   render() {
+    // var message='You selected '+this.state.selectValue;
     return (
       <div>
         <Header />
@@ -243,7 +251,6 @@ class VProducts extends Component {
                         <td>{list.Productname}</td>
                         <td>{list.Price}</td>
                         <td><MDBIcon icon="pencil-alt" onClick={() => this.handleEdit2(list.id)} />
-
                         </td>
                         <td> <MDBIcon icon="times" onClick={() => this.handledelete(list.id)} /></td>
                       </tr>
@@ -273,8 +280,29 @@ class VProducts extends Component {
                     <input type="password" id="confirmpassword" name="Shortdescription" placeholder="Shortdescription" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
                   </div> */}
                     <div className="col-sm-12 col-md-12 form-group">
-                      <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/> &nbsp; Check Availability
-                        <p> {this.msg}</p>
+                      {/* <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/> &nbsp; Check Availability
+                        <p> {this.msg}</p> */}
+
+{/* <MDBDropdown>
+      <MDBDropdownToggle caret color="primary">
+        MDBDropdown
+      </MDBDropdownToggle>
+      <MDBDropdownMenu basic>
+        <MDBDropdownItem>Action</MDBDropdownItem>
+        <MDBDropdownItem>Another Action</MDBDropdownItem>
+        <MDBDropdownItem>Something else here</MDBDropdownItem>
+        <MDBDropdownItem divider />
+        <MDBDropdownItem>Separated link</MDBDropdownItem>
+      </MDBDropdownMenu>
+    </MDBDropdown> */}
+                    <select className="form-control form-control-sm ml-3 w-75" id={this.props.Available} style={{ border: 'none' }} value={this.state.selectValue} 
+        onChange={this.handleChange1} required>
+                      <option value="select"> Check Availability</option>
+                      <option value="Available">Available</option>
+                      <option value="NotAvailable">Not Available</option>
+                      {/* {this.state.result} */}
+                    </select>
+                    {/* <p>{message}</p> */}
                     </div>
                   <div className="col-sm-12 col-md-12 form-group">
                     <form onSubmit={this.onFormSubmit}>
