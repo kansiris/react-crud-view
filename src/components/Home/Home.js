@@ -84,81 +84,34 @@ onSubmit=(e) =>{
             </div>
           </div>
         </nav> */}
-        <Modal isOpen={this.state.modal2} toggle={() => this.toggle(2)}>
+        {/* <Modal isOpen={this.state.modal2} toggle={() => this.toggle(2)}>
             <ModalBody>
           
           
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={() => this.toggle(2)}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>
+        </Modal> */}
         <div className="row imageconvention">
           <section style={{
-            backgroundImage: 'url(' + convention1 + ')', width: '100%',
-            height: '550px'
+            backgroundImage: 'url(' + convention1.png + ')', width: '100%',
+            height: '300px'
           }}>
             <div className="mask  d-flex justify-content-center align-items-center">
-            <form onSubmit={this.onSubmit}>
-              <div className="container">
-                <div className="row searchbar container-fluid" >
-                  <div className="col-md-2" >
-                    <div className="form-inline mt-4 mb-4">
-                      <i className="fa fa-1x fa-map-marker"></i>
-                      <input
-                        className="form-control form-control-sm ml-3 w-75"
-                        type="text"
-                        placeholder="Hyderabad" id="location" name="location" style={{ border: 'none' }} value={location}  onChange={this.onChange} required/>
-                    </div>
-                  </div>
-                  <div className="col-md-3" >
-                    <div className="form-inline mt-4 mb-4">
-                      <i className="fa fa-1x fa-list"></i>
-                      <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }}  onClick={this.handleSelectChange} required>
-                        <option value="select">Select Event</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Engagement">Engagement</option>
-                        <option value="BirthDay">BirthDay</option>
-                        <option value="Corporate">Corporate</option>
-                        <option value="Baby Function">Baby Function</option>
-                        <option value="other">other</option>
-                        {this.state.result}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-md-2" >
-                    <div className="form-inline mt-4 mb-4">
-                      <i className="fa fa-1x fa-users"></i>
-                      <input className="form-control form-control-sm ml-3 w-75" type="number" id="guests" name="guests"
-                       placeholder="Guests" style={{ border: 'none' }}  value={guests}  onChange={this.onChange} required/>
-                    </div>
-                  </div>
-                  <div className="col-md-3" >
-                    <div className="form-inline mt-4 mb-4">
-                      <i className="fa fa-1x fa-calendar-check-o"></i>
-                      <input
-                        className="form-control form-control-sm ml-3 w-75"
-                        type="date" id="eventdate" name="eventdate"
-                        placeholder="Date" style={{ border: 'none' }}
-                        value={eventdate}  onChange={this.onChange} required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-2" >
-                    <button type="submit" className="btn btn-danger btn-md searchexbtn" style={{ marginTop: '0px' }}>Search</button>
-                  </div>
-                </div>
-
-              </div>
-              </form>
+            <p>
+           For Get quality food for good health at
+              
+              </p></div> <div className="mask  d-flex justify-content-center align-items-center">
+              <p> My Village foods!</p>
             </div>
           </section>
         </div>
         <div className="displayimages" style={{ justifyContent: 'center' }}>
           <div className="row eximages">
-            <MDBCol md="12">
+          <p className="pad"> Purity promised </p>
+            {/* <MDBCol md="12">
               <MDBRow className="imagesall">
                 <MDBCol md="1">
                   <img src={require('../../images/left.png')} />
@@ -191,14 +144,14 @@ onSubmit=(e) =>{
                   <img src={require('../../images/right.png')} />
                 </MDBCol>
               </MDBRow>
-            </MDBCol>
+            </MDBCol> */}
           </div>
         </div>
         <div className="row maintxt">
           <MDBCol md="12">
             <div className="row maintitle">
               <h1>HOW IT WORKS
-            <p className="ptxt">Make A Story Of Painless Celebrations</p>
+            <p className="ptxt">Get quality food for every meal</p>
               </h1>
             </div>
           </MDBCol>
@@ -208,24 +161,38 @@ onSubmit=(e) =>{
             <div className="col-md-4">
               <a className="cardimgtxt">
                 <img src={require('../../images/1circle.png')} />
-                <p className="cardstxt">Select a package &amp; Shortlist your venues</p>
+                <p className="cardstxt">Select a Product &amp; Quntity Of Product</p>
               </a>
             </div>
             <div className="col-md-4">
               <a className="cardimgtxt">
                 <img src={require('../../images/2circle.png')} />
-                <p className="cardstxt">Fill your basic details to block venue</p>
+                <p className="cardstxt">Fill your basic details of the address to deliver</p>
               </a>
             </div>
             <div className="col-md-4">
               <a className="cardimgtxt">
                 <img src={require('../../images/3circle.png')} />
-                <p className="cardstxt">Pay the final amount &amp; start celebrations</p>
+                <p className="cardstxt">Pay the final amount &amp; Get Your poduct delivered</p>
               </a>
             </div>
           </div>
         </div>
-        <div className="row maintxt" style={{ justifyContent: 'center' }}>
+        <div className="row txtcard">
+          <h1> About Us</h1>
+<p>My Village Foods established in 2009. Since its inception, the company has developed into a professional organization that has gained a wide reputation of being a reliable and most successful in the agricultural product arena.
+
+Backed with a strong technical support from the most qualified professionals in the industry, My Village Foods, with its core team of young professionals make a perfect blend of young vigor and vast experience. Our products are customized to individual clients’ specific requirements. We understand the customer’s business thoroughly & our client engagement system allows us to become an extension of your staff and driving you to complete satisfaction. We thrive on our clients’ success and seek partnerships that nurture a long lasting relationship.
+
+My Village Foods is one of our brands has already established in US market.</p>
+
+        </div>
+        {/* <div className="row txtcard">
+         <p> <h1> Our Moto</h1></p>
+<center><p>To meet up to the requirements of modern day global customer through our value added products and services.</p></center>
+
+        </div> 
+         <div className="row maintxt" style={{ justifyContent: 'center' }}>
           <div className="row maintitle">
             <h1>BEST DEALS FOR YOU
        <p className="ptxt">Get Best Deals Now From Our Website, Checkout.</p>
@@ -377,10 +344,10 @@ onSubmit=(e) =>{
         </div>
         <div className="row exploremore" style={{ justifyContent: 'center' }}>
           <a href="#" className="btn btn-danger">Explore More &emsp;<i className="fa fa-arrow-right"></i></a>
-        </div>
+        </div>*/}
         <div className="row maintitle">
           <h1><section className="letstxt" style={{ marginLeft: '35%' }}>LET'S TALK</section>
-            <p className="ptxt">Get Personalized assistance to help you discover, book sample and supervise your event.</p>
+            <p className="ptxt">Get Personalized assistance to help you discover, Request sample and supervise your Order.</p>
           </h1>
         </div>
         <MDBContainer className="frmtxt">
@@ -444,16 +411,16 @@ onSubmit=(e) =>{
                   <a href="#" className="btn btn-danger">Explore More &emsp;<i className="fa fa-arrow-right"></i></a>
                   <br />
                   <br />
-                  <span className="txtex" style={{ justifyContent: 'center' }}> Whatsapp or Call Ahwanam.com at 7702053510 </span>
+                  <span className="txtex" style={{ justifyContent: 'center' }}> Whatsapp or Call myvillagerice.com at 7702053510 </span>
                   <br /><br />
                   <span className="txtex1"> (OR)</span>
                   <br /><br />
-                  <span className="txtex2"> Are you a Vendor? <a href="#1">Register</a></span>
+                  <span className="txtex2"> Want to Order our products? <a href="/products">Order Now</a></span>
                 </p>
               </form>
             </MDBCol>
           </MDBRow>
-        </MDBContainer>
+        </MDBContainer> 
       </div>
     );
   }
