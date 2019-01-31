@@ -66,15 +66,15 @@ render(){
               <h1 className="heading">All Products</h1>
               <div className="container" style={{backgroundColor:"white",paddingTop:"3%"}}>
         <div className="row">
-          <div className="col-sm-3 col-md-3">
+          <div className="col-sm-3 col-md-3"  style={{paddingTop:"3%"}}>
           
              <h5 className="txt">CATEGORIES</h5>
                <ul className="list-group">
-                          <li className="list-group-item"><a href='\'><span className="badge">4</span></a>dfhsgf
+                          <li className="list-group-item box"><a href='\'><span className="badge">4</span></a>Red Rice
                        </li>
-                         <li className="list-group-item">
-                          <a href='\'><span className="badge">4</span></a>dfhsgf</li>
-                            <li className="list-group-item"> <a href='\'><span className="badge">4</span></a>dfhsgf</li>
+                         <li className="list-group-item box">
+                          <a href='\'><span className="badge">4</span></a>Basmathi</li>
+                            <li className="list-group-item box" > <a href='\'><span className="badge">4</span></a>Idly Rice</li>
              </ul>
             </div>
             <div className="col-sm-9 col-md-9">

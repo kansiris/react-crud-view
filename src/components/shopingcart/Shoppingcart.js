@@ -44,23 +44,22 @@ class Shoppingcart extends Component {
 
      })
     }
-  
     // increment() {
     //     this.setState({
     //         counter: this.state.counter + 1
     //       });
-    //    const cal=this.state.counter * this.state.Price
+    //     const cal=this.state.counter * this.state.Price
     //         this.setState({
-    //          result:cal
-    //          });
+    //           result:cal
+    //           });
     //   }
     //   decrement(){
     //       if(this.state.counter > 0){
     //         this.setState({
     //             counter: this.state.counter - 1
     //           });
-    //           const cal=this.state.counter * this.state.Price
-    //         this.setState({
+    //            const cal=this.state.counter * this.state.Price
+    //          this.setState({
     //          result:cal
     //          });
     //       }  
@@ -146,18 +145,15 @@ class Shoppingcart extends Component {
                                         <div className="num">
                                             <div className="selectnumber">
                                             <input type="number"  name="quantity" min="1" max="100"  onChange={this.handleChange} />
-                                            {/* <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
+                                             {/* <button onClick={this.decrement} className="fa fa-minus dec"></button>&nbsp;
                                                 <input type="text" id={item.id} className="number" value={this.state.counter} onChange={this.handleChange}/>&nbsp;
-                                                <button onClick={this.increment} className="fa fa-plus dec"></button> */}
-                                             
+                                                <button onClick={this.increment} className="fa fa-plus dec"></button>  */}                                             
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-                                 
-                                 
-                                   {/* {this.state.quantity * item.Price}  */}
+                                <td>                                
+                                 {this.state.quantity*item.Price }                           
                                </td>
                                 {/* <td><button onClick={(e)=>this.remove(item.id)} ><i className="fa fa-times fa-1x" aria-hidden="true" ></i></button></td> */}
                                 <td><i className="fa fa-times fa-1x" aria-hidden="true" onClick={(e)=>this.remove(item.id)} ></i></td>
