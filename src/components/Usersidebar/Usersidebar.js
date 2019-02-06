@@ -16,23 +16,36 @@ class Adminsidebar extends Component {
     }
     render() {
       return (
-        <div style={{backgroundColor:"silver"}}>
+        // <div>
          
-          <div className="col-sm-2">
-            <label>
+        //   <div className="col-sm-2">
+        //     <label>
            
-            <a href="/Userdetails" style={{ float: "right", paddingTop: "4px" }}>Profile</a>  
-            </label>
-            </div>
+        //     <a href="/Userdetails" style={{ float: "right", paddingTop: "4px" }}>Profile</a>  
+        //     </label>
+        //     </div>
          
-            <div className="col-sm-2">
-            <label>
+        //     <div className="col-sm-2">
+        //     <label>
            
-            <a href="/UserOrderlist" style={{ float: "right", paddingTop: "4px" }}>Orders</a>  
-            </label>
-            </div>
+        //     <a href="/UserOrderlist" style={{ float: "right", paddingTop: "4px" }}>Orders</a>  
+        //     </label>
+        //     </div>
   
+        // </div>
+
+        <div className="row admin">
+        <div className="col-sm-4 col-md-4">
+        <ul className="list-group lst"> 
+          <li className="list-group-item lst1">
+          <a href="/Userdetails" className="list2">Profile</a>
+          </li>
+          <li className="list-group-item lst1">
+            <a href="/UserOrderlist" className="list2">Orders</a>
+          </li>
+        </ul>
         </div>
+      </div>
       );
     }
   }

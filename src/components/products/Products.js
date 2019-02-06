@@ -69,7 +69,7 @@ render(){
           <div className="col-sm-3 col-md-3"  style={{paddingTop:"3%"}}>
           
              <h5 className="txt">CATEGORIES</h5>
-               <ul className="list-group">
+             <ul className="list-group">
                           <li className="list-group-item box"><a href='\'><span className="badge">4</span></a>Red Rice
                        </li>
                          <li className="list-group-item box">

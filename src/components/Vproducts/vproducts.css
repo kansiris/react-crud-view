@@ -1,3 +1,17 @@
 .vproducts{
     padding-top: 5%;
 }
+.btntxt1{
+    color:#0c4d6c;
+    height:120%;
+    border:1px solid #0c4d6c;
+    font-size: 15px;
+    width:50%
+}
+.btntxt1:hover{
+    background-color: #0c4d6c;
+    color: white;
+}
+.pform{
+    width:80%
+}

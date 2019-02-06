@@ -1,0 +1,18 @@
+.admin{
+    padding-top:15%;
+}
+.lst{
+    display:inline-block;
+    color:#0c4d6c
+}
+.lst1:hover{
+    color:white;
+    background-color: #0c4d6c;
+}
+.lst2{
+    color:#0c4d6c;
+}
+.list2:hover{
+    color:white
+}
+

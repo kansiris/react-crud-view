@@ -48,7 +48,7 @@ onSubmit=(e) =>{
     localStorage.setItem('guests',this.state.guests);
     localStorage.setItem('eventdate',this.state.eventdate);
     this.setState({message:''});
-    this.props.history.push("/Results")
+    this.props.history.push("/Results") 
  }
 
   

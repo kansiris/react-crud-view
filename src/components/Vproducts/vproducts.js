@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import Header from '../Results/Header';
-// import './products.css';
 import logo from '../../images/logo.jpg';
 import Basmati from '../../images/Basmati.jpg';
 import matta from '../../images/matta.jpg';
@@ -11,7 +10,6 @@ import Adminsidebar from '../Adminsidebar/Adminsidebar';
 import Productlist1 from './Vproductlist'
 import './vproducts.css';
 import { MDBIcon } from 'mdbreact';
-// import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 class VProducts extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +21,6 @@ class VProducts extends Component {
     }
     this.state.name = localStorage.getItem('UserName');
     this.handleEdit = this.handleEdit.bind(this);
-    // this.Getproducts = this.Getproducts.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEdit3 = this.handleEdit3.bind(this);
@@ -35,35 +32,16 @@ class VProducts extends Component {
     this.Updatedetails = this.Updatedetails.bind(this);
     this.Savedetails = this.Savedetails.bind(this);
     this.handledelete = this.handledelete.bind(this);
-    // this.handleCheck=this.handleCheck.bind(this);
-    //   this.Savedetails=this.Savedetails.bind(this);
-    //   this.logindetails=this.logindetails.bind(this);
   }
   getInitialState(){
     return {selectValue:'Available'}
   }
   handleChange1(e){
-    // e.preventDefault();
     this.setState({selectValue:e.target.value});
-    // this.Updatedetails();
   }
-  // handleCheck(){
-  //   this.setState({checked: !this.state.checked});
-  // }
-  // render(){
-  //   var msg;
-  //   if(this.state.checked){
-  //     msg ="available"
-  //   }
-  //   else{
-  //     msg ="not available"
-  //   }
-  // }
   componentWillMount() {
     this.getproductlist();
   }
-  // Getproducts(id) {
-  // }
   getproductlist() {
     fetch('http://localhost:64017/api/Product/GetAllProducts').then((res) => res.json()).then((res) => {
       this.setState({
@@ -224,7 +202,6 @@ class VProducts extends Component {
     }
   }
   render() {
-    // var message='You selected '+this.state.selectValue;
     return (
       <div>
         <Header />
@@ -258,72 +235,49 @@ class VProducts extends Component {
                   </tbody>
                 </table>
               </div></div>
-              <div className="col-sm-5 col-md-5"> <form>
-                <h2 className="txt">Product Details</h2>
-                <div><button onClick={this.handleEdit3}>
-                  Add new product
-                 </button></div>
+              {/* <div></div>&emsp; */}
+              <div className="col-sm-5 col-md-5"> 
+                <h3 className="txt">Add/Edit Products</h3>
                 <div className="row">
                   <div className="col-sm-12 col-md-12 form-group">
-                    <input type="text" id="ProductId" name="ProductId" placeholder="Product Id" className="form-control" onChange={this.handleChange} value={this.state.ProductId} />
+                    <input type="text" id="ProductId" name="ProductId" placeholder="Product Id" className="form-control pform " onChange={this.handleChange} value={this.state.ProductId} />
                   </div>
                   <div className="col-sm-12 col-md-12 form-group">
-                    <input type="text" id="Productname" name="Productname" placeholder="Productname" className="form-control" onChange={this.handleChange} value={this.state.Productname} />
+                    <input type="text" id="Productname" name="Productname" placeholder="Productname" className="form-control pform" onChange={this.handleChange} value={this.state.Productname} />
                   </div>
                   <div className="col-sm-12 col-md-12 form-group">
-                    <input type="text" id="Price" name="Price" placeholder="Price" className="form-control" onChange={this.handleChange} value={this.state.Price} />
+                    <input type="text" id="Price" name="Price" placeholder="Price" className="form-control pform" onChange={this.handleChange} value={this.state.Price} />
                   </div>
-                  {/* <div className="col-sm-12 col-md-12 form-group">
-                    <input type="password" id="Password" name="description" placeholder="description" className="form-control" onChange={this.handleChange} value={this.state.Password} />
-                  </div>
-                  <div className="col-sm-12 col-md-12 form-group">
-                    <input type="password" id="confirmpassword" name="Shortdescription" placeholder="Shortdescription" className="form-control" onChange={this.handleChange} value={this.state.ConfirmPassword} />
-                  </div> */}
                     <div className="col-sm-12 col-md-12 form-group">
-                      {/* <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/> &nbsp; Check Availability
-                        <p> {this.msg}</p> */}
-
-{/* <MDBDropdown>
-      <MDBDropdownToggle caret color="primary">
-        MDBDropdown
-      </MDBDropdownToggle>
-      <MDBDropdownMenu basic>
-        <MDBDropdownItem>Action</MDBDropdownItem>
-        <MDBDropdownItem>Another Action</MDBDropdownItem>
-        <MDBDropdownItem>Something else here</MDBDropdownItem>
-        <MDBDropdownItem divider />
-        <MDBDropdownItem>Separated link</MDBDropdownItem>
-      </MDBDropdownMenu>
-    </MDBDropdown> */}
-                    <select className="form-control form-control-sm ml-3 w-75" id={this.props.Available} style={{ border: 'none' }} value={this.state.selectValue} 
-        onChange={this.handleChange1} required>
+                    <select className="form-control pform" id={this.props.Available} value={this.state.selectValue} 
+                      onChange={this.handleChange1} required>
                       <option value="select"> Check Availability</option>
                       <option value="Available">Available</option>
                       <option value="NotAvailable">Not Available</option>
-                      {/* {this.state.result} */}
                     </select>
-                    {/* <p>{message}</p> */}
                     </div>
+                     <div className="col-sm-6 col-md-6 form-group">
+                    <button onClick={this.Updatedetails} className="btntxt1">
+                      Save
+                    </button>
+                  </div>
+                  <div className="col-sm-6 col-md-6 form-group">
+                    <button onClick={this.Savedetails} className="btntxt1">
+                      Update
+                    </button>
+
+                  </div>
                   <div className="col-sm-12 col-md-12 form-group">
                     <form onSubmit={this.onFormSubmit}>
                       <h1>File Upload</h1>
                       <input type="file" name="myImage" onChange={this.onChange} />
-                      <button type="submit">Upload</button>
+                      <div></div>
+                    <div><button type="submit">Upload</button></div> 
+                     
                     </form></div>
-                  <div className="col-sm-12 col-md-12 form-group">
-                    {/* {this.renderButton()} */}
-                    <button onClick={this.Updatedetails}>
-                      Update
-                    </button>
-                  </div>
-                  <div className="col-sm-12 col-md-12 form-group">
-                    <button onClick={this.Savedetails}>
-                      save
-                    </button>
-
-                  </div>
+                 
                 </div>
-              </form>
+            
               </div>
             </div>
           </div>

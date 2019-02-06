@@ -23,11 +23,7 @@
 .checkout-progress{
     position: relative
 }
-/* .active{
-    position: relative;
-    background: #0c4d6c;
-    color: #fff;
-} */
+
 .list{
     display: table;
 }

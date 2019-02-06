@@ -15,13 +15,10 @@ class Header extends React.Component {
   };
     this.state.name = localStorage.getItem('Firstname');
     this.state.cartvalue=localStorage.getItem('cartvalue');
-   
  }
  componentWillMount(){
-   if(this.state. cartvalue!=null){
-
-  
-  
+   if(this.state. cartvalue!=null)
+   {
   var i=this.state.cartvalue;
   var z=0;
  for(var x=0;x<i.split(',').length;x++){
@@ -29,14 +26,11 @@ class Header extends React.Component {
        z++ 
    }
  }
-
   this.state.cartno=z;
  }else{
    this.state.cartno=0;
  }
-
 }
-
 
  logout = ()=>{
   localStorage.removeItem('Firstname');
@@ -44,10 +38,7 @@ class Header extends React.Component {
   window.location.reload();
  }
  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
-
- 
   renderButton1() {
- 
     if(this.state.name !== ''&& this.state.name !== null) {
     return (
       <div>
@@ -69,15 +60,13 @@ class Header extends React.Component {
           {this.state.name}
           </button>
       </div>
-      <div className="col-sm-3 col-md-3"><button className="dropdown-item" href="/Userdetails">Profile</button></div>
-      <div className="col-sm-3 col-md-3"> <button className="dropdown-item" href="#" onClick={this.logout}>Logout</button></div>
+      <div className="col-sm-3 col-md-3"><button className="dropdown-item" href="/Userdetails">PROFILE</button></div>
+      <div className="col-sm-3 col-md-3"> <button className="dropdown-item" href="#" onClick={this.logout}>LOGOUT</button></div>
    
   </div>
    
   {/* </div> */}
-</div>
-
-    
+</div> 
     {/* <div className="dropdown" onClick={this.toggleOpen}>
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -104,22 +93,12 @@ class Header extends React.Component {
   } else{
     return (
       <div>
-    
-    <a href="/Login"><strong className="black-text">Login <i className="fa fa-lock" aria-hidden="true"></i></strong></a>
-              
+    <a href="/Login"><strong className="black-text">LOGIN <i className="fa fa-lock" aria-hidden="true"></i></strong></a>         
       </div>
     )
-
   }}
- 
-
-
 render(){ 
-
-  
   return(
-
-
 <div>
 <nav className="navbar navbar-expand-lg navbar-light bg-white">
 <a href='/'>
@@ -128,7 +107,6 @@ render(){
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-
   <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{ marginLeft: "10%" }}>
     <ul className="navbar-nav mr-auto">
       {/* <select className="form-control form-control-sm ml-3 w-75" id="eventtype" style={{ border: 'none' }}  onClick={this.handleSelectChange} required>
@@ -140,13 +118,12 @@ render(){
                         <option value="Baby Function">Idly rice</option>
                         <option value="other">other</option>
                         {this.state.result}
-                      </select> */}
-                      
+                      </select> */}                
       <li className="nav-item">
-        <a className="nav-link" href="/products">Shop <span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="/products">SHOP <span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">About</a>
+        <a className="nav-link" href="#">ABOUT</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">BLOG</a>
@@ -155,7 +132,6 @@ render(){
         <a className="nav-link disabled" href="#">CONTACT</a>
       </li>
     </ul>
-   
     <form className="form-inline my-2 my-lg-0">
 {this.renderButton1()}
 <div>
@@ -170,10 +146,4 @@ render(){
 </div>
 );}
 }
- 
-
-
-
-
-
 export default Header;
